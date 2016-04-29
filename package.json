@@ -1,0 +1,18 @@
+{
+  "name": "webpack-plugin-lodash",
+  "version": "0.1.0",
+  "description": "Lodash modularized builds without the hassle",
+  "keywords": "webpack-plugin, lodash, minify",
+  "repository": "lodash/webpack-plugin-lodash",
+  "license": "MIT",
+  "main": "index.js",
+  "author": "John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)",
+  "contributors": [
+    "John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)",
+    "Blaine Bublitz <blaine.bublitz@gmail.com> (https://github.com/phated)",
+    "Mathias Bynens <mathias@qiwi.be> (https://mathiasbynens.be/)"
+  ],
+  "files": [
+    "index.js"
+  ]
+}
