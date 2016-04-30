@@ -1,1 +1,1 @@
-# webpack-plugin-lodash v0.1.0
+# lodash-webpack-plugin v0.1.0
