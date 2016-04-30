@@ -12,7 +12,11 @@
     "Blaine Bublitz <blaine.bublitz@gmail.com> (https://github.com/phated)",
     "Mathias Bynens <mathias@qiwi.be> (https://mathiasbynens.be/)"
   ],
+  "dependencies": {
+    "lodash": "^4.11.1"
+  },
   "files": [
-    "index.js"
+    "index.js",
+    "mapping.js"
   ]
 }
