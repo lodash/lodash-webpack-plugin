@@ -1,5 +1,4 @@
 import LodashReplacementPlugin from '../../../src/index';
 
-export default {
-  'plugins': [new LodashReplacementPlugin]
-};
+export const plugins = [new LodashReplacementPlugin];
+export default { plugins };
