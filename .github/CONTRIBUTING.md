@@ -11,7 +11,7 @@ commit your changes, &
 
 Before running the unit tests you’ll need to install, `npm i`,
 [development dependencies](https://docs.npmjs.com/files/package.json#devdependencies).
-Run unit tests from the command-line via `node test/test`.
+Run unit tests from the command-line via `npm test`.
 
 ## Contributor License Agreement
 
