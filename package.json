@@ -38,7 +38,7 @@
     ]
   },
   "files": [
-    "index.js",
-    "mapping.js"
+    "lib/index.js",
+    "lib/mapping.js"
   ]
 }
