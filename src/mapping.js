@@ -54,3 +54,5 @@ export const features = {
     ['_baseIteratee', 'identity']
   ]
 };
+
+export default { features };
