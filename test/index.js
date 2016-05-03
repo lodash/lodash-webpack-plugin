@@ -37,7 +37,7 @@ describe('Lodash modularized builds', function() {
 
       compiler.outputFileSystem = memFS;
       compiler.run((err, stats) => {
-        const modules = stats.toJson().modules;
+        const { modules } = stats.toJson();
         const output = memFS.readFileSync(outputPath, 'utf8');
         const size = prettyBytes(gzipSize(output));
 

@@ -22,7 +22,7 @@ export default class LodashReplacementPlugin {
         if (!result) {
           return callback();
         }
-        let length = replacements.length;
+        let { length } = replacements;
         while (length--) {
           const pair = replacements[length];
           if (pair[0].test(result.resource)) {
