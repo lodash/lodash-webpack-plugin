@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import path from 'path';
-import mapping from './mapping';
+import { features } from './mapping';
 
 function LodashReplacementPlugin(options={}) {
   const replacements = this.replacements = [];
-  _.forOwn(mapping.features, (pairs, key) => {
+  _.forOwn(features, (pairs, key) => {
     if (!options[key]) {
       _.each(pairs, pair => {
         const pattern = RegExp(`\\/lodash(?:-es)?\\/${ pair[0] }\\.js$`);
