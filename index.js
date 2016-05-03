@@ -9,8 +9,10 @@ function LodashReplacementPlugin(options) {
   var replacements = this.replacements = [];
   _.forOwn(mapping.features, function(pairs, key) {
     if (!options[key]) {
-      var pattern = RegExp('\\blodash(?:-es)?\\/' + pairs[0] + '\\.js$');
-      replacements.push([pattern, './' + pairs[1] + '.js']);
+      _.each(pairs, function(pair) {
+        var pattern = RegExp('\\/lodash(?:-es)?\\/' + pair[0] + '\\.js$');
+        replacements.push([pattern, './' + pair[1] + '.js']);
+      });
     }
   });
 }
