@@ -5,15 +5,35 @@ import fs from 'fs';
 import glob from 'glob';
 import { sync as gzipSize } from 'gzip-size';
 import MemoryFS from 'memory-fs';
+import mapping from '../src/mapping';
 import path from 'path';
-import plugin from '../src/index';
-import prettyBytes from 'pretty-bytes';
+import Plugin from '../src/index';
+import { promisify } from 'bluebird';
 import webpack from 'webpack';
 
 const memFS = new MemoryFS;
 
-function createConfig(configPath, entryPath) {
-  return merge({ 'entry': entryPath }, require(configPath).default, baseConfig);
+const trueOptions = _.mapValues(mapping.features, _.constant(true));
+
+class Config {
+  constructor(entryPath, options=trueOptions) {
+    merge(this, {
+      'entry': entryPath,
+      'plugins': [new Plugin(options)]
+    }, baseConfig);
+  }
+}
+
+class Compiler {
+  constructor(config={}) {
+    this.compiler = webpack(config);
+    this.compiler.outputFileSystem = memFS;
+    this.compiler.run = promisify(this.compiler.run, { 'context': this.compiler });
+  }
+
+  run() {
+    return this.compiler.run();
+  }
 }
 
 const merge = _.partialRight(_.mergeWith, (value, other) => {
@@ -22,28 +42,45 @@ const merge = _.partialRight(_.mergeWith, (value, other) => {
   }
 });
 
-describe('Lodash modularized builds', function() {
+/*----------------------------------------------------------------------------*/
+
+describe('Lodash reduced modularized builds', function() {
   this.timeout(0);
 
   _.each(glob.sync(path.join(__dirname, 'fixtures/*/')), testPath => {
     const testName = _.lowerCase(path.basename(testPath));
     const actualPath = path.join(testPath, 'actual.js');
-    const configPath = path.join(testPath, 'config.js');
+    const options = require(path.join(testPath, 'options.json'));
+
+    const config = new Config(actualPath);
+    const outputPath = path.join(config.output.path, config.output.filename);
+
+    const data = {
+      'before': { config },
+      'after':  { 'config': new Config(actualPath, options) }
+    };
+
+    const compile = key => new Compiler(data[key].config).run();
+
+    const complete = key => {
+      return stats => {
+        const bytes = gzipSize(memFS.readFileSync(outputPath));
+        const { length: count } = stats.toJson().modules;
+        _.assign(data[key], { bytes, count });
+      };
+    };
 
     it(`should work with ${ testName }`, done => {
-      const config = createConfig(configPath, actualPath);
-      const compiler = webpack(config);
-      const outputPath = path.join(config.output.path, config.output.filename);
-
-      compiler.outputFileSystem = memFS;
-      compiler.run((err, stats) => {
-        const { modules } = stats.toJson();
-        const output = memFS.readFileSync(outputPath, 'utf8');
-        const size = prettyBytes(gzipSize(output));
-
-        assert.ok(modules.length < 50);
-        done(err);
-      });
+      compile('before')
+        .then(complete('before'))
+        .then(() => compile('after'))
+        .then(complete('after'))
+        .then(() => {
+          const { before, after } = data;
+          assert.ok(before.bytes > after.bytes, `gzip bytes: ${ after.bytes }`);
+          assert.ok(before.count > after.count, `module count: ${ after.count }`);
+          done();
+        });
     });
   });
 });
