@@ -41,7 +41,7 @@ const merge = _.partialRight(_.mergeWith, (value, other) => {
 
 /*----------------------------------------------------------------------------*/
 
-describe('Lodash reduced modularized builds', function() {
+describe('reduced modular builds', function() {
   this.timeout(0);
 
   _.each(glob.sync(path.join(__dirname, 'fixtures/*/')), testPath => {
