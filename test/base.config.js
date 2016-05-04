@@ -13,7 +13,7 @@ export const module = {
     'exclude': /node_modules/,
     'query': {
       'plugins': ['lodash'],
-      'presets': ['es2015', 'stage-2']
+      'presets': ['es2015']
     }
   }]
 };
