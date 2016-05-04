@@ -1,3 +1,3 @@
-import { add, curry } from 'lodash';
+import { uniq } from 'lodash';
 
-curry(add)(1)(2);
+uniq([2, 1, 2]);

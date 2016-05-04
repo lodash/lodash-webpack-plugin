@@ -1,3 +1,3 @@
-import { bind } from 'lodash';
+import { add, curry } from 'lodash';
 
-bind(console.log, console);
+curry(add)(1)(2);
