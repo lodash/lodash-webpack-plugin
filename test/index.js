@@ -21,6 +21,8 @@ class Config {
   }
 }
 
+Object.setPrototypeOf(Config.prototype, null);
+
 class Compiler {
   constructor(config={}) {
     this.compiler = webpack(config);
