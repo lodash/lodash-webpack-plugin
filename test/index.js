@@ -5,7 +5,6 @@ import fs from 'fs';
 import glob from 'glob';
 import { sync as gzipSize } from 'gzip-size';
 import MemoryFS from 'memory-fs';
-import mapping from '../src/mapping';
 import path from 'path';
 import Plugin from '../src/index';
 import { promisify } from 'bluebird';
@@ -13,10 +12,8 @@ import webpack from 'webpack';
 
 const memFS = new MemoryFS;
 
-const trueOptions = _.mapValues(mapping.features, _.constant(true));
-
 class Config {
-  constructor(entryPath, options=trueOptions) {
+  constructor(entryPath, options={}) {
     merge(this, {
       'entry': entryPath,
       'plugins': [new Plugin(options)]
@@ -56,8 +53,8 @@ describe('Lodash reduced modularized builds', function() {
     const outputPath = path.join(config.output.path, config.output.filename);
 
     const data = {
-      'before': { config },
-      'after':  { 'config': new Config(actualPath, options) }
+      'before': { 'config': new Config(actualPath, options) },
+      'after': { config }
     };
 
     const compile = key => new Compiler(data[key].config).run();
