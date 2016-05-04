@@ -20,6 +20,15 @@ export const module = {
   }]
 };
 
+export const resolve = {
+  'extensions': ['', '.js'],
+  'modulesDirectories': [],
+  'root': [
+    path.join(rootPath, 'test/fixtures'),
+    path.join(rootPath, 'node_modules')
+  ]
+};
+
 export const plugins = [
   new webpack.optimize.OccurenceOrderPlugin,
   new webpack.optimize.UglifyJsPlugin({
@@ -31,18 +40,9 @@ export const plugins = [
   })
 ];
 
-export const resolve = {
-  'extensions': ['', '.js'],
-  'modulesDirectories': [],
-  'root': [
-    path.join(rootPath, 'test/fixtures'),
-    path.join(rootPath, 'node_modules')
-  ]
-};
-
 export default {
   output,
   module,
-  plugins,
-  resolve
+  resolve,
+  plugins
 };
