@@ -28,7 +28,7 @@ export default class LodashModuleReplacementPlugin {
           let { length } = replacements;
           while (length--) {
             const pair = replacements[length];
-            if (resource.endsWith(pair[0])) {
+            if (_.endsWith(resource, pair[0])) {
               result.resource = path.resolve(path.dirname(resource), pair[1]);
               break;
             }
