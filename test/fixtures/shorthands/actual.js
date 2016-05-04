@@ -1,3 +1,3 @@
-import { map } from 'lodash';
+import { capitalize, mapValues } from 'lodash';
 
-map({ 'a': { 'b': 2 } }, o => o.b);
+mapValues({ 'a': 'b' }, capitalize);
