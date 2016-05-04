@@ -8,7 +8,7 @@ export default class LodashReplacementPlugin {
     _.forOwn(features, (pairs, key) => {
       if (!options[key]) {
         _.each(pairs, pair => {
-          const pattern = RegExp(`\\/lodash(?:-es)?\\/${ pair[0] }\\.js$`);
+          const pattern = RegExp(`/lodash(?:-es)?/${ pair[0] }\\.js$`);
           replacements.push([pattern, `./${ pair[1] }.js`]);
         });
       }
