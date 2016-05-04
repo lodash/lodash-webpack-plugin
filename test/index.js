@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import assert from 'assert';
 import baseConfig from './base.config.js';
-import fs from 'fs';
+import fs from 'fs-extra';
 import glob from 'glob';
 import { sync as gzipSize } from 'gzip-size';
 import MemoryFS from 'memory-fs';
@@ -49,14 +49,17 @@ describe('reduced modular builds', function() {
   _.each(glob.sync(path.join(__dirname, 'fixtures/*/')), testPath => {
     const testName = _.lowerCase(path.basename(testPath));
     const actualPath = path.join(testPath, 'actual.js');
-    const options = require(path.join(testPath, 'options.json'));
+    const offPath = path.join(testPath, 'off.json');
+    const onPath = path.join(testPath, 'on.json');
 
-    const config = new Config(actualPath);
-    const outputPath = path.join(config.output.path, config.output.filename);
+    const offConfig = new Config(actualPath, fs.existsSync(offPath) ? require(offPath) : {});
+    const onConfig = new Config(actualPath, fs.existsSync(onPath) ? require(onPath) : {});
+
+    const outputPath = path.join(onConfig.output.path, onConfig.output.filename);
 
     const data = {
-      'before': { 'config': new Config(actualPath, options) },
-      'after': { config }
+      'before': { 'config': onConfig },
+      'after': { 'config': offConfig }
     };
 
     const compile = key => new Compiler(data[key].config).run();
@@ -77,7 +80,7 @@ describe('reduced modular builds', function() {
         .then(() => {
           const { before, after } = data;
           assert.ok(before.bytes > after.bytes, `gzip bytes: ${ after.bytes }`);
-          assert.ok(before.count > after.count, `module count: ${ after.count }`);
+          assert.ok(before.count >= after.count, `module count: ${ after.count }`);
           done();
         });
     });
