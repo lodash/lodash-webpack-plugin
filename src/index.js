@@ -2,7 +2,7 @@ import _ from 'lodash';
 import path from 'path';
 import { features } from './mapping';
 
-export default class LodashReplacementPlugin {
+export default class LodashModuleReplacementPlugin {
   constructor(options={}) {
     const replacements = this.replacements = [];
     _.forOwn(features, (pairs, key) => {
