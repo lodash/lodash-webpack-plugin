@@ -2,14 +2,15 @@ import _ from 'lodash';
 import path from 'path';
 import { features } from './mapping';
 
+const reLodash = RegExp('/lodash(?:-es)?/');
+
 export default class LodashModuleReplacementPlugin {
   constructor(options={}) {
     const replacements = this.replacements = [];
     _.forOwn(features, (pairs, key) => {
       if (!options[key]) {
         _.each(pairs, pair => {
-          const pattern = RegExp(`/lodash(?:-es)?/${ pair[0] }\\.js$`);
-          replacements.push([pattern, `./${ pair[1] }.js`]);
+          replacements.push([`/${ pair[0] }.js`, `./${ pair[1] }.js`]);
         });
       }
     });
@@ -22,12 +23,15 @@ export default class LodashModuleReplacementPlugin {
         if (!result) {
           return callback();
         }
-        let { length } = replacements;
-        while (length--) {
-          const pair = replacements[length];
-          if (pair[0].test(result.resource)) {
-            result.resource = path.resolve(path.dirname(result.resource), pair[1]);
-            break;
+        const { resource } = result;
+        if (reLodash.test(resource)) {
+          let { length } = replacements;
+          while (length--) {
+            const pair = replacements[length];
+            if (resource.endsWith(pair[0])) {
+              result.resource = path.resolve(path.dirname(resource), pair[1]);
+              break;
+            }
           }
         }
         return callback(null, result);
