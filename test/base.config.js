@@ -1,8 +1,10 @@
 import path from 'path';
 import webpack from 'webpack';
 
+const rootPath = path.resolve(__dirname, '..');
+
 export const output = {
-  'path': path.resolve(__dirname, '..'),
+  'path': rootPath,
   'filename': 'bundle.js'
 };
 
@@ -29,8 +31,18 @@ export const plugins = [
   })
 ];
 
+export const resolve = {
+  'extensions': ['', '.js'],
+  'modulesDirectories': [],
+  'root': [
+    path.join(rootPath, 'test/fixtures'),
+    path.join(rootPath, 'node_modules')
+  ]
+};
+
 export default {
   output,
   module,
-  plugins
+  plugins,
+  resolve
 };
