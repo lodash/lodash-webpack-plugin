@@ -1,3 +1,3 @@
 import { capitalize, map } from 'lodash';
 
-map(['foo', 'bar', 'baz'], capitalize);
+map(['a', 'b', 'c'], capitalize);
