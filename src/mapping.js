@@ -1,14 +1,15 @@
 export const features = {
   'caching': [
     ['_createSet', 'noop'],
-    ['_setToArray', 'noop'],
-    ['_MapCache', '_ListCache']
+    ['_MapCache', '_ListCache'],
+    ['_Stack', '_ListCache']
   ],
   'coercions': [
     ['_baseToNumber', 'identity'],
     ['_baseToString', 'identity'],
     ['_toKey', 'identity'],
     ['toInteger', 'identity'],
+    ['toLength', 'identity'],
     ['toNumber', 'identity'],
     ['toString', 'identity']
   ],
