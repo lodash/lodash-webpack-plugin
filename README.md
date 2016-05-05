@@ -19,31 +19,32 @@ var LodashReplacementPlugin = require('lodash-webpack-plugin');
 var webpack = require('webpack');
 
 module.exports = {
-'module': {
-  'loaders': [{
-    'loader': 'babel-loader',
-    'test': /\.js$/,
-    'exclude': /node_modules/,
-    'query': {
-      'plugins': ['lodash'],
-      'presets': ['es2015']
-    }
-  }],
-  'plugins': [
-    new LodashReplacementPlugin,
-    new webpack.optimize.OccurenceOrderPlugin,
-    new webpack.optimize.UglifyJsPlugin({
-      'compressor': {
-        'pure_getters': true,
-        'unsafe': true,
-        'warnings': false
+  'module': {
+    'loaders': [{
+      'loader': 'babel-loader',
+      'test': /\.js$/,
+      'exclude': /node_modules/,
+      'query': {
+        'plugins': ['lodash'],
+        'presets': ['es2015']
       }
-    })
-  ]
+    }],
+    'plugins': [
+      new LodashReplacementPlugin,
+      new webpack.optimize.OccurenceOrderPlugin,
+      new webpack.optimize.UglifyJsPlugin({
+        'compressor': {
+          'pure_getters': true,
+          'unsafe': true,
+          'warnings': false
+        }
+      })
+    ]
+  }
 };
 ```
 
-Opt-in to features by passing an options object.
+Opt-in to features by passing an options object:
 ```js
 new LodashReplacementPlugin({
   'collections': true,
