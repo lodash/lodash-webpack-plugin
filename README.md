@@ -23,7 +23,7 @@ module.exports = {
   'loaders': [{
     'loader': 'babel-loader',
     'test': /\.js$/,
-    'exclude': /node_modules/,
+    'exclude': '/node_modules/',
     'query': {
       'plugins': ['lodash'],
       'presets': ['es2015']
@@ -40,10 +40,11 @@ module.exports = {
       }
     })
   ]
+ }  
 };
 ```
 
-Opt-in to features by passing an options object.
+Opt-in to features by passing an options object:
 ```js
 new LodashReplacementPlugin({
   'collections': true,
