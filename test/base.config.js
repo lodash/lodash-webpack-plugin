@@ -3,6 +3,8 @@ import webpack from 'webpack';
 
 const rootPath = path.resolve(__dirname, '..');
 
+/*----------------------------------------------------------------------------*/
+
 export const output = {
   'path': rootPath,
   'filename': 'bundle.js'
@@ -24,8 +26,8 @@ export const resolve = {
   'extensions': ['', '.js'],
   'modulesDirectories': [],
   'root': [
-    path.join(rootPath, 'test/fixtures'),
-    path.join(rootPath, 'node_modules')
+    path.join(rootPath, 'node_modules'),
+    path.join(rootPath, 'test/fixtures')
   ]
 };
 
