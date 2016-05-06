@@ -22,28 +22,7 @@ import { capitalize, map } from 'lodash';
 map(['a', 'b', 'c'], capitalize);
 ```
 
-Without `babel-plugin-lodash` or `lodash-webpack-plugin`:
-```bash
-$ webpack entry.js bundle.js -p --module-bind js='babel?presets=es2015'
-$ gzip-size bundle.js | pretty-bytes
-$ > 23.33 kB
-```
-
-With only `babel-plugin-lodash`:
-```bash
-$ webpack entry.js bundle.js -p --module-bind js='babel?plugins=lodash&presets=es2015'
-$ gzip-size bundle.js | pretty-bytes
-$ > 5.81 kB
-```
-
-With `babel-plugin-lodash` and `lodash-wepack-plugin`:
-```bash
-$ webpack entry.js bundle.js --plugin lodash-webpack-plugin -p --module-bind js='babel?plugins=lodash&presets=es2015'
-$ gzip-size bundle.js | pretty-bytes
-$ > 817 B
-```
-
-Huzzah! Less than 1 kB!
+![demo](https://cloud.githubusercontent.com/assets/4303/15064867/2c5420b0-130e-11e6-8293-5037d359851f.gif)
 
 Opt-in to features by passing an options object:
 ```js
