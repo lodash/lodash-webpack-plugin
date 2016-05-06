@@ -1,7 +1,7 @@
 # lodash-webpack-plugin v0.1.0
 
-Create smaller Lodash builds by replacing feature sets of modules with
-[noop](https://lodash.com/docs#noop), [identity](https://lodash.com/docs#identity),
+Create smaller Lodash builds by replacing [feature sets](#feature-sets) of modules
+with [noop](https://lodash.com/docs#noop), [identity](https://lodash.com/docs#identity),
 or simpler alternatives.
 
 This plugin complements [babel-plugin-lodash](https://www.npmjs.com/package/babel-plugin-lodash)
@@ -52,6 +52,8 @@ new LodashModuleReplacementPlugin({
   'paths': true
 });
 ```
+
+## Feature Sets
 
 The following features are removed by default _(biggest savings first)_:
 
