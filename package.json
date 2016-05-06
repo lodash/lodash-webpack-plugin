@@ -5,7 +5,7 @@
   "keywords": "webpack-plugin, lodash, modules",
   "repository": "lodash/lodash-webpack-plugin",
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)",
   "contributors": [
     "John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)",
