@@ -32,7 +32,6 @@ export const features = {
     ['_createWrapper', '_createPartialWrapper']
   ],
   'guards': [
-    ['_getTag', '_baseGetTag'],
     ['_isIterateeCall', 'noop'],
     ['keys', '_baseKeys']
   ],
