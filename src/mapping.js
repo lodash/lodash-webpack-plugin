@@ -8,6 +8,7 @@ export const features = {
     ['_baseToNumber', 'identity'],
     ['_baseToString', 'identity'],
     ['_toKey', 'identity'],
+    ['toFinite', 'identity'],
     ['toInteger', 'identity'],
     ['toLength', 'identity'],
     ['toNumber', 'identity'],
