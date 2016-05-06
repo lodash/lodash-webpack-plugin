@@ -5,7 +5,7 @@ Create smaller Lodash builds by replacing feature sets of modules with
 or simpler alternatives.
 
 This plugin complements [babel-plugin-lodash](https://www.npmjs.com/package/babel-plugin-lodash)
-by reducing the cherry-picked builds further.
+by shrinking its cherry-picked builds even further!
 
 ## Install
 
@@ -22,7 +22,7 @@ $ npm i --save-dev lodash-webpack-plugin babel-core babel-loader babel-plugin-lo
 
 ###### webpack.config.js
 ```js
-var LodashReplacementPlugin = require('lodash-webpack-plugin');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 var webpack = require('webpack');
 
 module.exports = {
@@ -38,16 +38,16 @@ module.exports = {
     }]
   },
   'plugins': [
-    new LodashReplacementPlugin,
+    new LodashModuleReplacementPlugin,
     new webpack.optimize.OccurenceOrderPlugin,
     new webpack.optimize.UglifyJsPlugin
   ]
 };
 ```
 
-Opt-in to features by passing an options object:
+Opt-in to features with an options object:
 ```js
-new LodashReplacementPlugin({
+new LodashModuleReplacementPlugin({
   'collections': true,
   'paths': true
 });
@@ -64,5 +64,5 @@ The following features are removed by default _(biggest savings first)_:
 | `coercions`    | Coercion methods like `_.toInteger`, `_.toNumber`, & `_.toString`. |
 | `paths`        | Deep property path support for methods like `_.get`, `_.has`, & `_.set`. |
 | `guards`       | Dense array & iteratee call guards for methods like `_.every`, `_.keys`, & `_.some`. |
-| `metadata`     | Store metadata to reduce wrapping of bound, curried, & partially applied functions.<br>_(Requires `currying`)_ |
-| `placeholders` | Argument placeholder support for methods like `_.bind`, `_.curry`, & `_.partial`.<br>_(Requires `currying`)_ |
+| `metadata`     | Store metadata to reduce wrapping of bound, curried, & partially applied functions.<br>_(requires `currying`)_ |
+| `placeholders` | Argument placeholder support for methods like `_.bind`, `_.curry`, & `_.partial`.<br>_(requires `currying`)_ |
