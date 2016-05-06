@@ -33,13 +33,7 @@ export const resolve = {
 
 export const plugins = [
   new webpack.optimize.OccurenceOrderPlugin,
-  new webpack.optimize.UglifyJsPlugin({
-    'compressor': {
-      'pure_getters': true,
-      'unsafe': true,
-      'warnings': false
-    }
-  })
+  new webpack.optimize.UglifyJsPlugin
 ];
 
 export default {
