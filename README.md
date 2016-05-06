@@ -10,19 +10,40 @@ by reducing the cherry-picked builds further.
 ## Install
 
 ```bash
+$ npm i --save lodash
 $ npm i --save-dev lodash-webpack-plugin babel-core babel-loader babel-plugin-lodash babel-preset-es2015 webpack
 ```
 
 ## Example
 
-##### entry.js
-```js
-import { capitalize, map } from 'lodash';
-
-map(['a', 'b', 'c'], capitalize);
-```
-
 ![demo](https://cloud.githubusercontent.com/assets/4303/15064867/2c5420b0-130e-11e6-8293-5037d359851f.gif)
+
+## Usage
+
+###### webpack.config.js
+```js
+var LodashReplacementPlugin = require('lodash-webpack-plugin');
+var webpack = require('webpack');
+
+module.exports = {
+  'module': {
+    'loaders': [{
+      'loader': 'babel',
+      'test': /\.js$/,
+      'exclude': /node_modules/,
+      'query': {
+        'plugins': ['lodash'],
+        'presets': ['es2015']
+      }
+    }]
+  },
+  'plugins': [
+    new LodashReplacementPlugin,
+    new webpack.optimize.OccurenceOrderPlugin,
+    new webpack.optimize.UglifyJsPlugin
+  ]
+};
+```
 
 Opt-in to features by passing an options object:
 ```js
