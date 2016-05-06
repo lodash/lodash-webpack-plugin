@@ -5,7 +5,8 @@ import { features } from './mapping';
 const reLodash = RegExp('/lodash(?:-amd|-es)?/');
 
 export default class LodashModuleReplacementPlugin {
-  constructor(options={}) {
+  constructor(options) {
+    options || (options = {});
     const replacements = this.replacements = [];
     _.forOwn(features, (pairs, key) => {
       if (!options[key]) {
