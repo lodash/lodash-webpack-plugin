@@ -37,6 +37,7 @@ export const features = {
   ],
   'metadata': [
     ['_baseSetData', 'identity'],
+    ['_getData', 'noop'],
     ['_mergeData', 'identity'],
     ['_setData', 'identity']
   ],
