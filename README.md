@@ -4,52 +4,53 @@ Create smaller Lodash builds by replacing feature sets of modules with
 [noop](https://lodash.com/docs#noop), [identity](https://lodash.com/docs#identity),
 or simpler alternatives.
 
+This plugin complements [babel-plugin-lodash](https://www.npmjs.com/package/babel-plugin-lodash)
+by reducing the cherry-picked builds further.
+
 ## Install
 
 ```bash
 $ npm i --save-dev lodash-webpack-plugin babel-core babel-loader babel-plugin-lodash babel-preset-es2015 webpack
 ```
 
-## Usage
+## Example
 
-###### webpack.config.js
-
+##### entry.js
 ```js
-var LodashReplacementPlugin = require('lodash-webpack-plugin');
-var webpack = require('webpack');
+import { capitalize, map } from 'lodash';
 
-module.exports = {
-  'module': {
-    'loaders': [{
-      'loader': 'babel-loader',
-      'test': /\.js$/,
-      'exclude': /node_modules/,
-      'query': {
-        'plugins': ['lodash'],
-        'presets': ['es2015']
-      }
-    }],
-    'plugins': [
-      new LodashReplacementPlugin,
-      new webpack.optimize.OccurenceOrderPlugin,
-      new webpack.optimize.UglifyJsPlugin({
-        'compressor': {
-          'pure_getters': true,
-          'unsafe': true,
-          'warnings': false
-        }
-      })
-    ]
-  }
-};
+map(['a', 'b', 'c'], capitalize);
 ```
+
+Without `babel-plugin-lodash` or `lodash-webpack-plugin`:
+```bash
+$ webpack entry.js bundle.js -p --module-bind js='babel?presets=es2015'
+$ gzip-size bundle.js | pretty-bytes
+$ > 23.33 kB
+```
+
+With only `babel-plugin-lodash`:
+```bash
+$ webpack entry.js bundle.js -p --module-bind js='babel?plugins=lodash&presets=es2015'
+$ gzip-size bundle.js | pretty-bytes
+$ > 5.81 kB
+```
+
+With `babel-plugin-lodash` and `lodash-wepack-plugin`:
+```bash
+$ webpack entry.js bundle.js --plugin lodash-webpack-plugin -p --module-bind js='babel?plugins=lodash&presets=es2015'
+$ gzip-size bundle.js | pretty-bytes
+$ > 817 B
+```
+
+Huzzah! Less than 1 kB!
 
 Opt-in to features by passing an options object:
 ```js
 new LodashReplacementPlugin({
   'collections': true,
   'paths': true
-})
+});
 ```
 
 The following features are removed by default _(biggest savings first)_:
