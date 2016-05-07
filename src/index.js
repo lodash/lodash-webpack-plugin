@@ -2,7 +2,7 @@ import _ from 'lodash';
 import path from 'path';
 import { features } from './mapping';
 
-const reLodash = RegExp('/lodash/(?!fp/)|lodash(?:-amd|-es)/');
+const reLodash = RegExp('/lodash(?:/(?!fp/)|-es/|-amd/)');
 
 export default class LodashModuleReplacementPlugin {
   constructor(options) {
