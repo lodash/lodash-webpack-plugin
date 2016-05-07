@@ -7,34 +7,36 @@ const reLodash = RegExp('/lodash(?:-amd|-es)?/');
 export default class LodashModuleReplacementPlugin {
   constructor(options) {
     options || (options = {});
-    const replacements = this.replacements = [];
+    this.replacements = [];
     _.forOwn(features, (pairs, key) => {
       if (!options[key]) {
         _.each(pairs, pair => {
-          replacements.push([`/${ pair[0] }.js`, `./${ pair[1] }.js`]);
+          this.replacements.push([`/${ pair[0] }.js`, `./${ pair[1] }.js`]);
         });
       }
     });
   }
 
   apply(compiler) {
-    const replacements = this.replacements;
+    const resolvePath = _.memoize(resource => {
+      if (reLodash.test(resource)) {
+        let { length } = this.replacements;
+        while (length--) {
+          const pair = this.replacements[length];
+          if (_.endsWith(resource, pair[0])) {
+            return path.resolve(path.dirname(resource), pair[1]);
+          }
+        }
+      }
+      return resource;
+    });
+
     compiler.plugin('normal-module-factory', nmf => {
       nmf.plugin('after-resolve', (result, callback) => {
         if (!result) {
           return callback();
         }
-        const { resource } = result;
-        if (reLodash.test(resource)) {
-          let { length } = replacements;
-          while (length--) {
-            const pair = replacements[length];
-            if (_.endsWith(resource, pair[0])) {
-              result.resource = path.resolve(path.dirname(resource), pair[1]);
-              break;
-            }
-          }
-        }
+        result.resource = resolvePath(result.resource);
         return callback(null, result);
       });
     });
