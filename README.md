@@ -57,10 +57,10 @@ new LodashModuleReplacementPlugin({
 
 The following features are removed by default _(biggest savings first)_:
 
-| Feature | Description  |
+| Feature | Description |
 |:---|:---|
 | `shorthands`   | Iteratee shorthands for `_.property`, `_.matches`, & `_.matchesProperty`. |
-| `collections`  | Support for objects in “Collection” methods like `_.each`, `_.filter`, & `_.map`. |
+| `collections`  | Support objects in “Collection” methods like `_.each`, `_.filter`, & `_.map`. |
 | `currying`     | Support for `_.curry` & `_.curryRight`. |
 | `caching`      | Caches using `Map` & `Set` for methods like `_.cloneDeep`, `_.isEqual`, & `_.uniq`. |
 | `coercions`    | Coercion methods like `_.toInteger`, `_.toNumber`, & `_.toString`. |
