@@ -62,7 +62,7 @@ The following features are removed by default _(biggest savings first)_:
 | `shorthands`   | Iteratee shorthands for `_.property`, `_.matches`, & `_.matchesProperty`. |
 | `collections`  | Support objects in “Collection” methods like `_.each`, `_.filter`, & `_.map`. |
 | `currying`     | Support for `_.curry` & `_.curryRight`. |
-| `caching`      | Caches using `Map` & `Set` for methods like `_.cloneDeep`, `_.isEqual`, & `_.uniq`. |
+| `caching`      | Caches for methods like `_.cloneDeep`, `_.isEqual`, & `_.uniq`. |
 | `coercions`    | Coercion methods like `_.toInteger`, `_.toNumber`, & `_.toString`. |
 | `paths`        | Deep property path support for methods like `_.get`, `_.has`, & `_.set`. |
 | `guards`       | Dense array & iteratee call guards for methods like `_.every`, `_.keys`, & `_.some`. |
