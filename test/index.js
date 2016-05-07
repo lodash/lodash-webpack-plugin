@@ -50,11 +50,9 @@ describe('reduced modular builds', function() {
     const testName = _.lowerCase(path.basename(testPath));
     const actualPath = path.join(testPath, 'actual.js');
     const offPath = path.join(testPath, 'off.json');
-    const onPath = path.join(testPath, 'on.json');
-
     const offConfig = new Config(actualPath, fs.existsSync(offPath) ? require(offPath) : {});
+    const onPath = path.join(testPath, 'on.json');
     const onConfig = new Config(actualPath, fs.existsSync(onPath) ? require(onPath) : {});
-
     const outputPath = path.join(onConfig.output.path, onConfig.output.filename);
 
     const data = {
@@ -83,6 +81,24 @@ describe('reduced modular builds', function() {
           assert.ok(before.count >= after.count, `module count: ${ after.count }`);
           done();
         });
+    });
+  });
+
+  /*--------------------------------------------------------------------------*/
+
+  _.each(glob.sync(path.join(__dirname, 'fp-fixtures/*/')), testPath => {
+    const testName = _.lowerCase(path.basename(testPath));
+    const actualPath = path.join(testPath, 'actual.js');
+    const config = new Config(actualPath);
+    const outputPath = path.join(config.output.path, config.output.filename);
+    const plugin = config.plugins[0];
+
+    it(`should work with ${ testName }`, done => {
+      new Compiler(config).run()
+        .then(() => {
+          assert.ok(!_.some(plugin.matches, pair => _.includes(pair[0], '/fp/')));
+          done();
+        })
     });
   });
 });
