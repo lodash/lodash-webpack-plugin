@@ -7,11 +7,13 @@ const reLodash = RegExp('/lodash(?:/(?!fp/)|-es/|-amd/)');
 export default class LodashModuleReplacementPlugin {
   constructor(options) {
     options || (options = {});
-    this.replacements = [];
+    this.matches = [];
+    this.patterns = [];
+
     _.forOwn(features, (pairs, key) => {
       if (!options[key]) {
         _.each(pairs, pair => {
-          this.replacements.push([`/${ pair[0] }.js`, `./${ pair[1] }.js`]);
+          this.patterns.push([`/${ pair[0] }.js`, `./${ pair[1] }.js`]);
         });
       }
     });
@@ -20,11 +22,13 @@ export default class LodashModuleReplacementPlugin {
   apply(compiler) {
     const resolvePath = _.memoize(resource => {
       if (reLodash.test(resource)) {
-        let { length } = this.replacements;
+        let { length } = this.patterns;
         while (length--) {
-          const pair = this.replacements[length];
+          const pair = this.patterns[length];
           if (_.endsWith(resource, pair[0])) {
-            return path.resolve(path.dirname(resource), pair[1]);
+            const result = path.resolve(path.dirname(resource), pair[1]);
+            this.matches.push([resource, result]);
+            return result;
           }
         }
       }
