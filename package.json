@@ -17,7 +17,7 @@
     "test": "mocha --check-leaks --slow 1e3 --compilers js:babel-core/register"
   },
   "dependencies": {
-    "lodash": "^4.11.2"
+    "lodash": "^4.12.0"
   },
   "devDependencies": {
     "babel-cli": "^6.7.7",
