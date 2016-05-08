@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build": "babel src --out-dir lib",
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --check-leaks --slow 1e3 --compilers js:babel-core/register"
   },
   "dependencies": {
     "lodash": "^4.11.2"
