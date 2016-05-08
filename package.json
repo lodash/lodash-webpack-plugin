@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build": "babel src --out-dir lib",
-    "test": "mocha --reporter min --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register"
   },
   "dependencies": {
     "lodash": "^4.11.2"
