@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import assert from 'assert';
 import baseConfig from './base.config.js';
-import fs from 'fs-extra';
+import fs from 'fs';
 import glob from 'glob';
 import { sync as gzipSize } from 'gzip-size';
 import MemoryFS from 'memory-fs';

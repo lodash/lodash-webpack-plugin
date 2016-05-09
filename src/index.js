@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import fs from 'fs';
 import path from 'path';
 import { features } from './mapping';
 
@@ -27,8 +28,10 @@ export default class LodashModuleReplacementPlugin {
           const pair = this.patterns[length];
           if (_.endsWith(resource, pair[0])) {
             const result = path.resolve(path.dirname(resource), pair[1]);
-            this.matches.push([resource, result]);
-            return result;
+            if (fs.existsSync(result)) {
+              this.matches.push([resource, result]);
+              return result;
+            }
           }
         }
       }
