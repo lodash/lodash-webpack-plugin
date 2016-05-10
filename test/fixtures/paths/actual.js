@@ -1,3 +1,3 @@
-import { has } from 'lodash';
+import { get } from 'lodash';
 
-has(Object, 'keys');
+get({}, 'a');

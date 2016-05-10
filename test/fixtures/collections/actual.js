@@ -1,3 +1,3 @@
-import { capitalize, map } from 'lodash';
+import { map } from 'lodash';
 
-map(['a', 'b', 'c'], capitalize);
+map([1, 2, 3], String);

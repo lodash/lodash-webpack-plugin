@@ -1,3 +1,3 @@
-import { capitalize, mapValues } from 'lodash';
+import { mapValues } from 'lodash';
 
-mapValues({ 'a': 'b' }, capitalize);
+mapValues({ 'a': 1 }, String);
