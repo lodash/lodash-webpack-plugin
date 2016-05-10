@@ -42,6 +42,7 @@ export const features = {
   'guards': [
     ['_isHostObject', 'noop'],
     ['_isIterateeCall', 'noop'],
+    ['_isPrototype', 'noop'],
     ['isArguments', 'noop'],
     ['isNative', 'identity'],
     ['keys', '_baseKeys']
