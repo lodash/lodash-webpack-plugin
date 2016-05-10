@@ -4,6 +4,11 @@ export const features = {
     ['_MapCache', '_ListCache'],
     ['_Stack', '_ListCache']
   ],
+  'chaining': [
+    ['_getFuncName', 'noop'],
+    ['_isLaziable', 'noop'],
+    ['_LodashWrapper', 'noop']
+  ],
   'coercions': [
     ['_baseToNumber', 'identity'],
     ['_baseToString', 'identity'],
@@ -30,6 +35,9 @@ export const features = {
   ],
   'currying': [
     ['_createWrapper', '_createPartialWrapper']
+  ],
+  'flattening': [
+    ['_baseFlatten', 'identity']
   ],
   'guards': [
     ['_isIterateeCall', 'noop'],
