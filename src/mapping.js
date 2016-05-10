@@ -40,7 +40,10 @@ export const features = {
     ['_baseFlatten', 'identity']
   ],
   'guards': [
+    ['_isHostObject', 'noop'],
     ['_isIterateeCall', 'noop'],
+    ['isArguments', 'noop'],
+    ['isNative', 'identity'],
     ['keys', '_baseKeys']
   ],
   'metadata': [
