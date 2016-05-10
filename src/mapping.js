@@ -61,7 +61,7 @@ export const features = {
     ['_composeArgsRight', 'identity'],
     ['_getHolder', 'noop'],
     ['_getPlaceholder', 'noop'],
-    ['_replaceHolders', 'noop']
+    ['_replaceHolders', 'constant']
   ],
   'shorthands': [
     ['_baseIteratee', 'identity']
