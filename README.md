@@ -64,9 +64,9 @@ The following features are removed by default _(biggest savings first)_:
 | `currying`     | Support for “curry” methods. |
 | `caching`      | Caches for methods like `_.cloneDeep`, `_.isEqual`, & `_.uniq`. |
 | `coercions`    | Coercion methods like `_.toInteger`, `_.toNumber`, & `_.toString`. |
-| `paths`        | Deep property path support for methods like `_.get`, `_.has`, & `_.set`. |
-| `flattening`   | Support for “flatten” methods & flattening arguments. |
 | `guards`       | Guards for `arguments` objects, host objects, sparse arrays, & other edge cases. |
+| `flattening`   | Support for “flatten” methods & flattening arguments. |
+| `paths`        | Deep property path support for methods like `_.get`, `_.has`, & `_.set`. |
 | `memoizing`    | Support for `_.memoize` & memoization. |
 | `chaining`     | Components to support chain sequences. |
 | `metadata`     | Metadata to reduce wrapping of bound, curried, & partially applied functions.<br>_(requires `currying`)_ |
