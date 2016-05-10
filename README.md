@@ -67,6 +67,7 @@ The following features are removed by default _(biggest savings first)_:
 | `paths`        | Deep property path support for methods like `_.get`, `_.has`, & `_.set`. |
 | `flattening`   | Support for “flatten” methods & flattening arguments. |
 | `guards`       | Guards for `arguments` objects, host objects, sparse arrays, & other edge cases. |
+| `memoizing`    | Support for `_.memoize` & memoization. |
 | `chaining`     | Components to support chain sequences. |
 | `metadata`     | Metadata to reduce wrapping of bound, curried, & partially applied functions.<br>_(requires `currying`)_ |
 | `placeholders` | Argument placeholder support for “bind”, “curry”, & “partial” methods.<br>_(requires `currying`)_ |

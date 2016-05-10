@@ -46,6 +46,9 @@ export const features = {
     ['isNative', 'identity'],
     ['keys', '_baseKeys']
   ],
+  'memoizing': [
+    ['memoize', 'identity']
+  ],
   'metadata': [
     ['_baseSetData', 'identity'],
     ['_getData', 'noop'],
