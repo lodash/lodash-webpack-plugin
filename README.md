@@ -60,11 +60,13 @@ The following features are removed by default _(biggest savings first)_:
 | Feature | Description |
 |:---|:---|
 | `shorthands`   | Iteratee shorthands for `_.property`, `_.matches`, & `_.matchesProperty`. |
-| `collections`  | Support objects in “Collection” methods like `_.each`, `_.filter`, & `_.map`. |
-| `currying`     | Support for `_.curry` & `_.curryRight`. |
+| `collections`  | Support for objects in “Collection” methods. |
+| `currying`     | Support for “curry” methods. |
 | `caching`      | Caches for methods like `_.cloneDeep`, `_.isEqual`, & `_.uniq`. |
 | `coercions`    | Coercion methods like `_.toInteger`, `_.toNumber`, & `_.toString`. |
 | `paths`        | Deep property path support for methods like `_.get`, `_.has`, & `_.set`. |
-| `guards`       | Dense array & iteratee call guards for methods like `_.every`, `_.keys`, & `_.some`. |
-| `metadata`     | Store metadata to reduce wrapping of bound, curried, & partially applied functions.<br>_(requires `currying`)_ |
-| `placeholders` | Argument placeholder support for methods like `_.bind`, `_.curry`, & `_.partial`.<br>_(requires `currying`)_ |
+| `flattening`   | Support for “flatten” methods & flattening arguments. |
+| `guards`       | Guards for `arguments` objects, host objects, sparse arrays, & other edge cases. |
+| `chaining`     | Components to support chain sequences. |
+| `metadata`     | Metadata to reduce wrapping of bound, curried, & partially applied functions.<br>_(requires `currying`)_ |
+| `placeholders` | Argument placeholder support for “bind”, “curry”, & “partial” methods.<br>_(requires `currying`)_ |
