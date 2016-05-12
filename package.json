@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "build": "babel src --out-dir lib",
+    "prepublish": "npm run build",
     "test": "mocha --check-leaks --slow 1e3 --compilers js:babel-core/register"
   },
   "dependencies": {
