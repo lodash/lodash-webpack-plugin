@@ -23,6 +23,8 @@ export const features = {
   ],
   'collections': [
     ['_baseAggregator', '_arrayAggregator'],
+    ['_baseFilter', '_arrayFilter'],
+    ['_baseMap', '_arrayMap'],
     ['each', '_arrayEach'],
     ['eachRight', '_arrayEachRight'],
     ['every', '_arrayEvery'],
