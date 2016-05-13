@@ -54,7 +54,8 @@ export const features = {
     ['isArguments', 'noop'],
     ['isNative', 'stubTrue'],
     ['isNative', 'identity'],
-    ['keys', '_baseKeys']
+    ['keys', '_baseKeys'],
+    ['times', '_baseTimes']
   ],
   'memoizing': [
     ['memoize', 'identity']
