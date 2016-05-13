@@ -5,7 +5,9 @@ export const features = {
     ['_Stack', '_ListCache']
   ],
   'chaining': [
+    ['_getFuncName', 'stubString'],
     ['_getFuncName', 'noop'],
+    ['_isLaziable', 'stubFalse'],
     ['_isLaziable', 'noop'],
     ['_LodashWrapper', 'noop']
   ],
@@ -40,10 +42,15 @@ export const features = {
     ['_baseFlatten', 'identity']
   ],
   'guards': [
+    ['_isHostObject', 'stubFalse'],
     ['_isHostObject', 'noop'],
+    ['_isIterateeCall', 'stubFalse'],
     ['_isIterateeCall', 'noop'],
+    ['_isPrototype', 'stubFalse'],
     ['_isPrototype', 'noop'],
+    ['isArguments', 'stubFalse'],
     ['isArguments', 'noop'],
+    ['isNative', 'stubTrue'],
     ['isNative', 'identity'],
     ['keys', '_baseKeys']
   ],
@@ -65,6 +72,7 @@ export const features = {
     ['_composeArgsRight', 'identity'],
     ['_getHolder', 'noop'],
     ['_getPlaceholder', 'noop'],
+    ['_replaceHolders', 'stubArray'],
     ['_replaceHolders', 'constant']
   ],
   'shorthands': [
