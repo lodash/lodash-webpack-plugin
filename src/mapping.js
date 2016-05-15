@@ -44,6 +44,7 @@ export const features = {
     ['_baseFlatten', 'identity']
   ],
   'guards': [
+    ['_getNative', '_getValue'],
     ['_isHostObject', 'stubFalse'],
     ['_isHostObject', 'noop'],
     ['_isIterateeCall', 'stubFalse'],
