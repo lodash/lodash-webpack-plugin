@@ -86,17 +86,18 @@ describe('reduced modular builds', function() {
 
   /*--------------------------------------------------------------------------*/
 
-  _.each(glob.sync(path.join(__dirname, 'fp-fixtures/*/')), testPath => {
-    const testName = _.lowerCase(path.basename(testPath));
+  _.each(glob.sync(path.join(__dirname, 'non-fixtures/*/')), testPath => {
+    const testName = path.basename(testPath);
+    const rePath = RegExp('/' + testName + '\\b');
     const actualPath = path.join(testPath, 'actual.js');
     const config = new Config(actualPath);
     const outputPath = path.join(config.output.path, config.output.filename);
     const plugin = config.plugins[0];
 
-    it(`should work with ${ testName }`, done => {
+    it(`should not replace ${ testName }`, done => {
       new Compiler(config).run()
         .then(() => {
-          assert.ok(!_.some(plugin.matches, pair => _.includes(pair[0], '/fp/')));
+          assert.ok(!_.some(plugin.matches, pair => rePath.test(pair[0])));
           done();
         })
     });
