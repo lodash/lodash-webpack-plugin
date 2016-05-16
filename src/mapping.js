@@ -69,7 +69,8 @@ export const features = {
   ],
   'paths':[
     ['_castPath', 'identity'],
-    ['_isKey', 'identity']
+    ['_isKey', 'identity'],
+    ['property', '_baseProperty']
   ],
   'placeholders': [
     ['_composeArgs', 'identity'],
