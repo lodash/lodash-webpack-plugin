@@ -88,7 +88,7 @@ describe('reduced modular builds', function() {
 
   _.each(glob.sync(path.join(__dirname, 'non-fixtures/*/')), testPath => {
     const testName = path.basename(testPath);
-    const rePath = RegExp('/' + testName + '\\b');
+    const rePath = RegExp('/' + testName + '(?:/|\\.js$)');
     const actualPath = path.join(testPath, 'actual.js');
     const config = new Config(actualPath);
     const outputPath = path.join(config.output.path, config.output.filename);
