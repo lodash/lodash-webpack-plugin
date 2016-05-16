@@ -94,7 +94,7 @@ describe('reduced modular builds', function() {
     const outputPath = path.join(config.output.path, config.output.filename);
     const plugin = config.plugins[0];
 
-    it(`should not replace ${ testName }`, done => {
+    it(`should not replace explicit \`${ testName }\` use`, done => {
       new Compiler(config).run()
         .then(() => {
           assert.ok(!_.some(plugin.matches, pair => rePath.test(pair[0])));
