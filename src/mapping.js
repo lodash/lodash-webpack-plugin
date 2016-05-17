@@ -68,8 +68,11 @@ export const features = {
     ['_setData', 'identity']
   ],
   'paths':[
+    ['_baseGet', '_getValue'],
     ['_castPath', 'identity'],
     ['_isKey', 'identity'],
+    ['has', '_baseHas'],
+    ['hasIn', '_baseHasIn'],
     ['property', '_baseProperty']
   ],
   'placeholders': [
