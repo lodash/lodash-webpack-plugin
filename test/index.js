@@ -90,7 +90,6 @@ describe('reduced modular builds', function() {
     const testName = path.basename(testPath);
     const actualPath = path.join(testPath, 'actual.js');
     const config = new Config(actualPath);
-    const outputPath = path.join(config.output.path, config.output.filename);
     const plugin = config.plugins[0];
 
     it(`should enable currying for explicit \`${ testName }\` use`, done => {
@@ -109,7 +108,6 @@ describe('reduced modular builds', function() {
     const rePath = RegExp('/' + testName + '(?:/|\\.js$)');
     const actualPath = path.join(testPath, 'actual.js');
     const config = new Config(actualPath);
-    const outputPath = path.join(config.output.path, config.output.filename);
     const plugin = config.plugins[0];
 
     it(`should not replace explicit \`${ testName }\` use`, done => {
