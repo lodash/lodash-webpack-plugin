@@ -86,6 +86,24 @@ describe('reduced modular builds', function() {
 
   /*--------------------------------------------------------------------------*/
 
+  _.each(glob.sync(path.join(__dirname, 'curry-fixtures/*/')), testPath => {
+    const testName = path.basename(testPath);
+    const actualPath = path.join(testPath, 'actual.js');
+    const config = new Config(actualPath);
+    const outputPath = path.join(config.output.path, config.output.filename);
+    const plugin = config.plugins[0];
+
+    it(`should enable currying for explicit \`${ testName }\` use`, done => {
+      new Compiler(config).run()
+        .then(() => {
+          assert.ok(!_.some(plugin.matches, pair => _.endsWith(pair[1], '_createPartialWrapper.js')));
+          done();
+        })
+    });
+  });
+
+  /*--------------------------------------------------------------------------*/
+
   _.each(glob.sync(path.join(__dirname, 'non-fixtures/*/')), testPath => {
     const testName = path.basename(testPath);
     const rePath = RegExp('/' + testName + '(?:/|\\.js$)');

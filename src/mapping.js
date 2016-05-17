@@ -88,4 +88,10 @@ export const features = {
   ]
 };
 
-export default { features };
+export const methodOptions = {
+  'curry': { 'currying': true },
+  'curryRight': { 'currying': true },
+  'partialRight': { 'currying': true }
+};
+
+export default { features, methodOptions };

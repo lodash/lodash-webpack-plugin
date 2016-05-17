@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
-import { features } from './mapping';
+import { features, methodOptions } from './mapping';
 
 const reLodashPath = RegExp('/lodash(?:/(?!fp/)|-es/|-amd/)');
 const reLodashRaw = RegExp('^lodash(?:/|-es/|-amd/)\\w+$');
@@ -16,19 +16,25 @@ const stubs = [
   './stubTrue.js'
 ];
 
+function getPatterns(options) {
+  const result = [];
+  _.forOwn(features, (pairs, key) => {
+    if (!options[key]) {
+      _.each(pairs, pair => {
+        result.push([`/${ pair[0] }.js`, `./${ pair[1] }.js`]);
+      });
+    }
+  });
+  return result;
+}
+
+/*----------------------------------------------------------------------------*/
+
 export default class LodashModuleReplacementPlugin {
   constructor(options) {
-    options || (options = {});
     this.matches = [];
-    this.patterns = [];
-
-    _.forOwn(features, (pairs, key) => {
-      if (!options[key]) {
-        _.each(pairs, pair => {
-          this.patterns.push([`/${ pair[0] }.js`, `./${ pair[1] }.js`]);
-        });
-      }
-    });
+    this.options = options || {};
+    this.patterns = getPatterns(this.options);
   }
 
   apply(compiler) {
@@ -38,7 +44,7 @@ export default class LodashModuleReplacementPlugin {
         let { length } = this.patterns;
         while (length--) {
           const pair = this.patterns[length];
-          // Replace the resource if it end swith the first pattern of the pair as
+          // Replace the resource if it ends with the first pattern of the pair as
           // long as it isn't an explicit request for a module which is to be stubbed.
           if (_.endsWith(resource, pair[0]) &&
               !(reLodashRaw.test(rawRequest) && _.includes(stubs, pair[1]))) {
@@ -54,6 +60,20 @@ export default class LodashModuleReplacementPlugin {
     }, data => data.resource);
 
     compiler.plugin('normal-module-factory', nmf => {
+      nmf.plugin('before-resolve', (data, callback) => {
+        if (!data) {
+          return callback();
+        }
+        const { request } = data;
+        if (reLodashRaw.test(request)) {
+          const newOptions = methodOptions[path.basename(request, '.js')];
+          if (newOptions) {
+            this.patterns = getPatterns(_.assign(this.options, newOptions));
+          }
+        }
+        return callback(null, data);
+      });
+
       nmf.plugin('after-resolve', (data, callback) => {
         if (!data) {
           return callback();
