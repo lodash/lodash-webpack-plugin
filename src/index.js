@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
-import { features, methodOptions } from './mapping';
+import { features, overrides } from './mapping';
 
-const reLodashPath = RegExp('/lodash(?:/(?!fp/)|-es/|-amd/)');
-const reLodashRaw = RegExp('^lodash(?:/|-es/|-amd/)\\w+$');
+const rePath = RegExp('/lodash(?:/(?!fp/)|-es/|-amd/)');
+const reRequest = RegExp('^lodash(?:/|-es/|-amd/)\\w+$');
 
 const stubs = [
   './identity.js',
@@ -40,14 +40,14 @@ export default class LodashModuleReplacementPlugin {
   apply(compiler) {
     const resolvePath = _.memoize(data => {
       const { rawRequest, resource } = data;
-      if (reLodashPath.test(resource)) {
+      if (rePath.test(resource)) {
         let { length } = this.patterns;
         while (length--) {
           const pair = this.patterns[length];
           // Replace the resource if it ends with the first pattern of the pair as
           // long as it isn't an explicit request for a module which is to be stubbed.
           if (_.endsWith(resource, pair[0]) &&
-              !(reLodashRaw.test(rawRequest) && _.includes(stubs, pair[1]))) {
+              !(reRequest.test(rawRequest) && _.includes(stubs, pair[1]))) {
             const result = path.resolve(path.dirname(resource), pair[1]);
             if (fs.existsSync(result)) {
               this.matches.push([resource, result]);
@@ -65,10 +65,10 @@ export default class LodashModuleReplacementPlugin {
           return callback();
         }
         const { request } = data;
-        if (reLodashRaw.test(request)) {
-          const newOptions = methodOptions[path.basename(request, '.js')];
-          if (newOptions) {
-            this.patterns = getPatterns(_.assign(this.options, newOptions));
+        if (reRequest.test(request)) {
+          const override = overrides[path.basename(request, '.js')];
+          if (!_.isMatch(this.options, override)) {
+            this.patterns = getPatterns(_.assign(this.options, override));
           }
         }
         return callback(null, data);
