@@ -40,23 +40,25 @@ export default class LodashModuleReplacementPlugin {
   apply(compiler) {
     const resolvePath = _.memoize(data => {
       const { rawRequest, resource } = data;
-      if (rePath.test(resource)) {
-        let { length } = this.patterns;
-        while (length--) {
-          const pair = this.patterns[length];
-          // Replace the resource if it ends with the first pattern of the pair as
-          // long as it isn't an explicit request for a module which is to be stubbed.
-          if (_.endsWith(resource, pair[0]) &&
-              !(reRequest.test(rawRequest) && _.includes(stubs, pair[1]))) {
-            const result = path.resolve(path.dirname(resource), pair[1]);
-            if (fs.existsSync(result)) {
-              this.matches.push([resource, result]);
-              return result;
-            }
-          }
-        }
+      let result = resource;
+      if (!rePath.test(resource)) {
+        return result;
       }
-      return resource;
+      _.each(this.patterns, pair => {
+        // Replace the resource, if it ends with the first pattern of the pair,
+        // as long as it isn't an explicit request for a stubbed module.
+        if (!_.endsWith(resource, pair[0]) ||
+            (reRequest.test(rawRequest) && _.includes(stubs, pair[1]))) {
+          return;
+        }
+        const modulePath = path.resolve(path.dirname(resource), pair[1]);
+        if (fs.existsSync(modulePath)) {
+          result = modulePath;
+          this.matches.push([resource, result]);
+          return false;
+        }
+      });
+      return result;
     }, data => data.resource);
 
     compiler.plugin('normal-module-factory', nmf => {
