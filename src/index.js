@@ -1,20 +1,11 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
+import { stubs } from './listing';
 import { features, overrides } from './mapping';
 
 const rePath = RegExp('/lodash(?:/(?!fp/)|-es/|-amd/)');
 const reRequest = RegExp('^lodash(?:/|-es/|-amd/)\\w+$');
-
-const stubs = [
-  './identity.js',
-  './noop.js',
-  './stubArray.js',
-  './stubFalse.js',
-  './stubObject.js',
-  './stubString.js',
-  './stubTrue.js'
-];
 
 function getPatterns(options) {
   const result = [];

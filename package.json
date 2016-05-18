@@ -44,6 +44,7 @@
   },
   "files": [
     "lib/index.js",
+    "lib/listing.js",
     "lib/mapping.js"
   ]
 }
