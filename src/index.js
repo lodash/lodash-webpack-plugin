@@ -38,7 +38,7 @@ export default class LodashModuleReplacementPlugin {
             (reRequest.test(rawRequest) && _.includes(stubs, pair[1]))) {
           return;
         }
-        const modulePath = path.resolve(path.dirname(resource), `${ pair[1] }.js`);
+        const modulePath = path.join(path.dirname(resource), `${ pair[1] }.js`);
         if (fs.existsSync(modulePath)) {
           result = modulePath;
           this.matches.push([resource, result]);
