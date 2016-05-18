@@ -32,6 +32,13 @@ export default class LodashModuleReplacementPlugin {
       if (!rePath.test(resource)) {
         return result;
       }
+      if (reRequest.test(rawRequest)) {
+        // Apply any feature set overrides for explicitly requested modules.
+        const override = overrides[path.basename(rawRequest, '.js')];
+        if (!_.isMatch(this.options, override)) {
+          this.patterns = getPatterns(_.assign(this.options, override));
+        }
+      }
       _.each(this.patterns, pair => {
         // Replace matches as long as they aren't explicit requests for stubbed modules.
         if ((path.basename(resource, '.js') != pair[0]) ||
@@ -49,26 +56,11 @@ export default class LodashModuleReplacementPlugin {
     }, ({ resource }) => resource);
 
     compiler.plugin('normal-module-factory', nmf => {
-      nmf.plugin('before-resolve', (data, callback) => {
-        if (!data) {
-          return callback();
-        }
-        const { request } = data;
-        if (reRequest.test(request)) {
-          const override = overrides[path.basename(request, '.js')];
-          if (!_.isMatch(this.options, override)) {
-            this.patterns = getPatterns(_.assign(this.options, override));
-          }
-        }
-        return callback(null, data);
-      });
-
       nmf.plugin('after-resolve', (data, callback) => {
-        if (!data) {
-          return callback();
+        if (data) {
+          data.resource = resolvePath(data)
         }
-        data.resource = resolvePath(data);
-        return callback(null, data);
+        return data ? callback(null, data) : callback();
       });
     });
   }
