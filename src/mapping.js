@@ -44,6 +44,7 @@ export const features = {
     ['_baseFlatten', 'identity']
   ],
   'guards': [
+    ['_baseClone', 'identity'],
     ['_getNative', '_getValue'],
     ['_isHostObject', 'stubFalse'],
     ['_isHostObject', 'noop'],
@@ -89,6 +90,10 @@ export const features = {
 };
 
 export const overrides = {
+  'clone': { 'guards': true },
+  'cloneDeep': { 'guards': true },
+  'cloneDeepWith': { 'guards': true },
+  'cloneWith': { 'guards': true },
   'curry': { 'currying': true },
   'curryRight': { 'currying': true },
   'partialRight': { 'currying': true }

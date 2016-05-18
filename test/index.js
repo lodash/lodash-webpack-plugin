@@ -86,6 +86,23 @@ describe('reduced modular builds', function() {
 
   /*--------------------------------------------------------------------------*/
 
+  _.each(glob.sync(path.join(__dirname, 'clone-fixtures/*/')), testPath => {
+    const testName = path.basename(testPath);
+    const actualPath = path.join(testPath, 'actual.js');
+    const config = new Config(actualPath);
+    const plugin = config.plugins[0];
+
+    it(`should enable cloning for explicit \`${ testName }\` use`, done => {
+      new Compiler(config).run()
+        .then(() => {
+          assert.ok(!_.some(plugin.matches, pair => _.endsWith(pair[0], '_baseClone.js')));
+          done();
+        })
+    });
+  });
+
+  /*--------------------------------------------------------------------------*/
+
   _.each(glob.sync(path.join(__dirname, 'curry-fixtures/*/')), testPath => {
     const testName = path.basename(testPath);
     const actualPath = path.join(testPath, 'actual.js');
@@ -95,7 +112,7 @@ describe('reduced modular builds', function() {
     it(`should enable currying for explicit \`${ testName }\` use`, done => {
       new Compiler(config).run()
         .then(() => {
-          assert.ok(!_.some(plugin.matches, pair => _.endsWith(pair[1], '_createPartialWrapper.js')));
+          assert.ok(!_.some(plugin.matches, pair => _.endsWith(pair[0], '_createWrapper')));
           done();
         })
     });
