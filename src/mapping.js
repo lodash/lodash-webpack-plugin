@@ -11,6 +11,9 @@ export const features = {
     ['_isLaziable', 'noop'],
     ['_LodashWrapper', 'noop']
   ],
+  'cloning': [
+    ['_baseClone', 'identity']
+  ],
   'coercions': [
     ['_baseToNumber', 'identity'],
     ['_baseToString', 'identity'],
@@ -44,7 +47,6 @@ export const features = {
     ['_baseFlatten', 'identity']
   ],
   'guards': [
-    ['_baseClone', 'identity'],
     ['_getNative', '_getValue'],
     ['_isHostObject', 'stubFalse'],
     ['_isHostObject', 'noop'],
@@ -90,10 +92,10 @@ export const features = {
 };
 
 export const overrides = {
-  'clone': { 'guards': true },
-  'cloneDeep': { 'guards': true },
-  'cloneDeepWith': { 'guards': true },
-  'cloneWith': { 'guards': true },
+  'clone': { 'cloning': true },
+  'cloneDeep': { 'cloning': true },
+  'cloneDeepWith': { 'cloning': true },
+  'cloneWith': { 'cloning': true },
   'curry': { 'currying': true },
   'curryRight': { 'currying': true },
   'partialRight': { 'currying': true }
