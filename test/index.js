@@ -112,7 +112,7 @@ describe('reduced modular builds', function() {
     it(`should enable currying for explicit \`${ testName }\` use`, done => {
       new Compiler(config).run()
         .then(() => {
-          assert.ok(!_.some(plugin.matches, pair => _.endsWith(pair[0], '_createWrapper')));
+          assert.ok(!_.some(plugin.matches, pair => _.endsWith(pair[0], '_createWrapper.js')));
           done();
         })
     });
