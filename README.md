@@ -60,10 +60,10 @@ The following features are removed by default _(biggest savings first)_:
 | Feature | Description |
 |:---|:---|
 | `shorthands`   | Iteratee shorthands for `_.property`, `_.matches`, & `_.matchesProperty`. |
-| `collections`  | Support for objects in “Collection” methods. |
 | `cloning`      | Support for “clone” methods & cloning source objects. |
 | `currying`     | Support for “curry” methods. |
 | `caching`      | Caches for methods like `_.cloneDeep`, `_.isEqual`, & `_.uniq`. |
+| `collections`  | Support for objects in “Collection” methods. |
 | `coercions`    | Coercion methods like `_.toInteger`, `_.toNumber`, & `_.toString`. |
 | `guards`       | Guards for `arguments` objects, host objects, sparse arrays, & other edge cases. |
 | `flattening`   | Support for “flatten” methods & flattening arguments. |
