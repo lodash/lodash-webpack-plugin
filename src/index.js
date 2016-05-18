@@ -27,8 +27,7 @@ export default class LodashModuleReplacementPlugin {
   }
 
   apply(compiler) {
-    const resolvePath = _.memoize(data => {
-      const { rawRequest, resource } = data;
+    const resolvePath = _.memoize(({ rawRequest, resource }) => {
       let result = resource;
       if (!rePath.test(resource)) {
         return result;
@@ -47,7 +46,7 @@ export default class LodashModuleReplacementPlugin {
         }
       });
       return result;
-    }, data => data.resource);
+    }, ({ resource }) => resource);
 
     compiler.plugin('normal-module-factory', nmf => {
       nmf.plugin('before-resolve', (data, callback) => {
