@@ -11,9 +11,7 @@ function getPatterns(options) {
   const result = [];
   _.forOwn(features, (pairs, key) => {
     if (!options[key]) {
-      _.each(pairs, pair => {
-        result.push([`/${ pair[0] }.js`, `./${ pair[1] }.js`]);
-      });
+      result.push(...pairs);
     }
   });
   return result;
@@ -24,7 +22,7 @@ function getPatterns(options) {
 export default class LodashModuleReplacementPlugin {
   constructor(options) {
     this.matches = [];
-    this.options = options || {};
+    this.options = _.assign({}, options);
     this.patterns = getPatterns(this.options);
   }
 
@@ -36,13 +34,13 @@ export default class LodashModuleReplacementPlugin {
         return result;
       }
       _.each(this.patterns, pair => {
-        // Replace the resource, if it ends with the first pattern of the pair,
-        // as long as it isn't an explicit request for a stubbed module.
-        if (!_.endsWith(resource, pair[0]) ||
+        // Replace the resource, if its base name matches, as long as
+        // it isn't an explicit request for a stubbed module.
+        if ((path.basename(resource, '.js') != pair[0]) ||
             (reRequest.test(rawRequest) && _.includes(stubs, pair[1]))) {
           return;
         }
-        const modulePath = path.resolve(path.dirname(resource), pair[1]);
+        const modulePath = path.resolve(path.dirname(resource), `${ pair[1] }.js`);
         if (fs.existsSync(modulePath)) {
           result = modulePath;
           this.matches.push([resource, result]);
