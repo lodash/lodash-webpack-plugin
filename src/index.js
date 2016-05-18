@@ -34,8 +34,7 @@ export default class LodashModuleReplacementPlugin {
         return result;
       }
       _.each(this.patterns, pair => {
-        // Replace the resource, if its base name matches, as long as
-        // it isn't an explicit request for a stubbed module.
+        // Replace matches as long as they aren't explicit requests for stubbed modules.
         if ((path.basename(resource, '.js') != pair[0]) ||
             (reRequest.test(rawRequest) && _.includes(stubs, pair[1]))) {
           return;
