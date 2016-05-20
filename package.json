@@ -32,7 +32,7 @@
     "gzip-size": "^3.0.0",
     "memory-fs": "^0.3.0",
     "mocha": "^2.4.5",
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.1"
   },
   "babel": {
     "plugins": [
