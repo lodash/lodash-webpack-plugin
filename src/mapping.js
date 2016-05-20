@@ -44,7 +44,7 @@ export const features = {
     ['_createWrapper', '_createPartialWrapper']
   ],
   'flattening': [
-    ['_baseFlatten', 'identity']
+    ['_baseFlatten', 'head']
   ],
   'guards': [
     ['_getNative', '_getValue'],
