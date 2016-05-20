@@ -70,7 +70,7 @@ export const features = {
     ['_mergeData', 'identity'],
     ['_setData', 'identity']
   ],
-  'paths':[
+  'paths': [
     ['_baseGet', '_getValue'],
     ['_castPath', 'identity'],
     ['_isKey', 'identity'],
