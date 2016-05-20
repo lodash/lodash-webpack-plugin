@@ -87,7 +87,8 @@ export const features = {
     ['_replaceHolders', 'constant']
   ],
   'shorthands': [
-    ['_baseIteratee', 'identity']
+    ['_baseIteratee', 'identity'],
+    ['_isFlattenableIteratee', '_isFlattenable']
   ]
 };
 
