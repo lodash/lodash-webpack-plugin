@@ -96,8 +96,15 @@ export const overrides = {
   'cloneDeep': { 'cloning': true },
   'cloneDeepWith': { 'cloning': true },
   'cloneWith': { 'cloning': true },
+  'concat': { 'flattening': true },
   'curry': { 'currying': true },
   'curryRight': { 'currying': true },
+  'flatMap': { 'flattening': true },
+  'flatMapDeep': { 'flattening': true },
+  'flatMapDepth': { 'flattening': true },
+  'flatten': { 'flattening': true },
+  'flattenDeep': { 'flattening': true },
+  'flattenDepth': { 'flattening': true },
   'partialRight': { 'currying': true }
 };
 
