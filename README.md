@@ -66,7 +66,7 @@ The following features are removed by default _(biggest savings first)_:
 | `collections`  | Support for objects in “Collection” methods. |
 | `coercions`    | Coercion methods like `_.toInteger`, `_.toNumber`, & `_.toString`. |
 | `guards`       | Guards for `arguments` objects, host objects, sparse arrays, & other edge cases. |
-| `flattening`   | Support for “flatten” methods & flattening arguments. |
+| `flattening`   | Support for “flatten” methods & flattening rest arguments. |
 | `paths`        | Deep property path support for methods like `_.get`, `_.has`, & `_.set`. |
 | `memoizing`    | Support for `_.memoize` & memoization. |
 | `chaining`     | Components to support chain sequences. |
