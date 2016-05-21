@@ -88,7 +88,7 @@ export const features = {
   ],
   'shorthands': [
     ['_baseIteratee', 'identity'],
-    ['_isFlattenableIteratee', '_isFlattenable']
+    ['_isFlattenableIteratee', 'isArray']
   ]
 };
 
