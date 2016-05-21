@@ -41,7 +41,8 @@ export const features = {
     ['some', '_arraySome']
   ],
   'currying': [
-    ['_createWrapper', '_createPartialWrapper']
+    ['_createWrapper', '_createPartialWrapper'],
+    ['unary', '_baseUnary']
   ],
   'flattening': [
     ['_baseFlatten', 'head']
