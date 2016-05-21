@@ -93,6 +93,7 @@ export const features = {
 };
 
 export const overrides = {
+  'ary': { 'currying': true },
   'clone': { 'cloning': true },
   'cloneDeep': { 'cloning': true },
   'cloneDeepWith': { 'cloning': true },
@@ -106,7 +107,9 @@ export const overrides = {
   'flatten': { 'flattening': true },
   'flattenDeep': { 'flattening': true },
   'flattenDepth': { 'flattening': true },
-  'partialRight': { 'currying': true }
+  'flip': { 'currying': true },
+  'partialRight': { 'currying': true },
+  'rearg': { 'currying': true }
 };
 
 export default { features, overrides };
