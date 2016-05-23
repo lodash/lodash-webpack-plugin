@@ -13,7 +13,7 @@
     "Mathias Bynens <mathias@qiwi.be> (https://mathiasbynens.be/)"
   ],
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "build": "babel src --out-dir lib || true",
     "prepublish": "npm run build",
     "test": "mocha --check-leaks --slow 1e3 --compilers js:babel-core/register"
   },
