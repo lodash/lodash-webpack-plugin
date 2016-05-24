@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import assert from 'assert';
+import { assert } from 'chai';
 import baseConfig from './base.config.js';
 import fs from 'fs';
 import glob from 'glob';
