@@ -35,6 +35,10 @@ class Compiler {
   }
 }
 
+function getTestName(testPath) {
+  return path.basename(testPath).split('-').join(' ');
+}
+
 const merge = _.partialRight(_.mergeWith, (value, other) => {
   if (_.isArray(value) && _.isArray(other)) {
     return value.concat(other);
@@ -47,7 +51,7 @@ describe('reduced modular builds', function() {
   this.timeout(0);
 
   _.each(glob.sync(path.join(__dirname, 'fixtures/*/')), testPath => {
-    const testName = _.lowerCase(path.basename(testPath));
+    const testName = getTestName(testPath);
     const actualPath = path.join(testPath, 'actual.js');
     const offPath = path.join(testPath, 'off.json');
     const offConfig = new Config(actualPath, fs.existsSync(offPath) ? require(offPath) : {});
@@ -87,7 +91,7 @@ describe('reduced modular builds', function() {
   /*--------------------------------------------------------------------------*/
 
   _.each(glob.sync(path.join(__dirname, 'clone-fixtures/*/')), testPath => {
-    const testName = path.basename(testPath);
+    const testName = getTestName(testPath);
     const actualPath = path.join(testPath, 'actual.js');
     const config = new Config(actualPath);
     const plugin = config.plugins[0];
@@ -104,7 +108,7 @@ describe('reduced modular builds', function() {
   /*--------------------------------------------------------------------------*/
 
   _.each(glob.sync(path.join(__dirname, 'curry-fixtures/*/')), testPath => {
-    const testName = path.basename(testPath);
+    const testName = getTestName(testPath);
     const actualPath = path.join(testPath, 'actual.js');
     const config = new Config(actualPath);
     const plugin = config.plugins[0];
@@ -121,7 +125,7 @@ describe('reduced modular builds', function() {
   /*--------------------------------------------------------------------------*/
 
   _.each(glob.sync(path.join(__dirname, 'non-fixtures/*/')), testPath => {
-    const testName = path.basename(testPath);
+    const testName = getTestName(testPath);
     const rePath = RegExp('/' + testName + '(?:/|\\.js$)');
     const actualPath = path.join(testPath, 'actual.js');
     const config = new Config(actualPath);
