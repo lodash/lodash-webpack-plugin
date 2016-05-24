@@ -60,6 +60,7 @@ export const features = {
     ['isNative', 'stubTrue'],
     ['isNative', 'identity'],
     ['keys', '_baseKeys'],
+    ['keysIn', '_baseKeysIn'],
     ['times', '_baseTimes']
   ],
   'memoizing': [

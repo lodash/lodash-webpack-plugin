@@ -1,4 +1,4 @@
-import { keys } from 'lodash';
+import { keysIn } from 'lodash';
 
 class Foo {
   constructor() {
@@ -8,4 +8,4 @@ class Foo {
 
 Foo.prototype.b = 2;
 
-keys(new Foo);
+keysIn(new Foo);
