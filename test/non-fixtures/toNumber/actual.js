@@ -1,4 +1,4 @@
 import { range, toNumber } from 'lodash';
 
-range(10);
+range(1);
 toNumber('1');
