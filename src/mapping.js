@@ -57,6 +57,7 @@ export const features = {
     ['_isPrototype', 'noop'],
     ['isArguments', 'stubFalse'],
     ['isArguments', 'noop'],
+    ['isNaN', 'baseIsNaN'],
     ['isNative', 'stubTrue'],
     ['isNative', 'identity'],
     ['keys', '_baseKeys'],
