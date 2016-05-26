@@ -95,7 +95,8 @@ export const features = {
   ],
   'uncommons': [
     ['_equalByTag', 'eq'],
-    ['_initCloneByTag', 'identity']
+    ['_initCloneByTag', 'identity'],
+    ['isTypedArray', 'stubFalse']
   ],
 };
 
