@@ -55,8 +55,6 @@ export const features = {
     ['_isIterateeCall', 'noop'],
     ['_isPrototype', 'stubFalse'],
     ['_isPrototype', 'noop'],
-    ['isArguments', 'stubFalse'],
-    ['isArguments', 'noop'],
     ['isNaN', 'baseIsNaN'],
     ['isNative', 'stubTrue'],
     ['isNative', 'identity'],
@@ -96,6 +94,8 @@ export const features = {
   'uncommons': [
     ['_equalByTag', 'eq'],
     ['_initCloneByTag', 'identity'],
+    ['isArguments', 'stubFalse'],
+    ['isArguments', 'noop'],
     ['isTypedArray', 'stubFalse']
   ],
 };
