@@ -85,7 +85,11 @@ export const features = {
   ],
   'uncommons': [
     ['_equalByTag', 'eq'],
+    ['_getTag', '_baseGetTag'],
     ['_initCloneByTag', 'identity'],
+    ['_mapToArray', 'stubArray'],
+    ['_setToArray', 'stubArray'],
+    ['_setToPairs', 'stubArray'],
     ['isArguments', 'stubFalse'],
     ['isSymbol', 'stubFalse'],
     ['isTypedArray', 'stubFalse']
@@ -108,6 +112,9 @@ export const overrides = {
   'flattenDeep': { 'flattening': true },
   'flattenDepth': { 'flattening': true },
   'flip': { 'currying': true },
+  'isMap': { 'uncommons': true },
+  'isSymbol': { 'uncommons': true },
+  'isWeakMap': { 'uncommons': true },
   'partialRight': { 'currying': true },
   'rearg': { 'currying': true }
 };
