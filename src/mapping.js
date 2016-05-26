@@ -6,9 +6,7 @@ export const features = {
   ],
   'chaining': [
     ['_getFuncName', 'stubString'],
-    ['_getFuncName', 'noop'],
     ['_isLaziable', 'stubFalse'],
-    ['_isLaziable', 'noop'],
     ['_LodashWrapper', 'noop']
   ],
   'cloning': [
@@ -50,14 +48,10 @@ export const features = {
   'guards': [
     ['_getNative', '_getValue'],
     ['_isHostObject', 'stubFalse'],
-    ['_isHostObject', 'noop'],
     ['_isIterateeCall', 'stubFalse'],
-    ['_isIterateeCall', 'noop'],
     ['_isPrototype', 'stubFalse'],
-    ['_isPrototype', 'noop'],
     ['isNaN', 'baseIsNaN'],
     ['isNative', 'stubTrue'],
-    ['isNative', 'identity'],
     ['keys', '_baseKeys'],
     ['keysIn', '_baseKeysIn'],
     ['times', '_baseTimes']
@@ -83,9 +77,7 @@ export const features = {
     ['_composeArgs', 'identity'],
     ['_composeArgsRight', 'identity'],
     ['_getHolder', 'noop'],
-    ['_getPlaceholder', 'noop'],
-    ['_replaceHolders', 'stubArray'],
-    ['_replaceHolders', 'constant']
+    ['_replaceHolders', 'stubArray']
   ],
   'shorthands': [
     ['_baseIteratee', 'identity'],
@@ -95,7 +87,6 @@ export const features = {
     ['_equalByTag', 'eq'],
     ['_initCloneByTag', 'identity'],
     ['isArguments', 'stubFalse'],
-    ['isArguments', 'noop'],
     ['isSymbol', 'stubFalse'],
     ['isTypedArray', 'stubFalse']
   ],
