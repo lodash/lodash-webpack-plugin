@@ -92,7 +92,11 @@ export const features = {
   'shorthands': [
     ['_baseIteratee', 'identity'],
     ['_isFlattenableIteratee', 'isArray']
-  ]
+  ],
+  'uncommons': [
+    ['_equalByTag', 'eq'],
+    ['_initCloneByTag', 'identity']
+  ],
 };
 
 export const overrides = {
