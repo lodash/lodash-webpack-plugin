@@ -91,6 +91,7 @@ export const features = {
     ['_setToArray', 'stubArray'],
     ['_setToPairs', 'stubArray'],
     ['isArguments', 'stubFalse'],
+    ['isBuffer', 'stubFalse'],
     ['isSymbol', 'stubFalse'],
     ['isTypedArray', 'stubFalse']
   ],
