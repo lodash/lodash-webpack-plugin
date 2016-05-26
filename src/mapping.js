@@ -96,6 +96,7 @@ export const features = {
     ['_initCloneByTag', 'identity'],
     ['isArguments', 'stubFalse'],
     ['isArguments', 'noop'],
+    ['isSymbol', 'stubFalse'],
     ['isTypedArray', 'stubFalse']
   ],
 };
