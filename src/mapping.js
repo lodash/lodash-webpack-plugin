@@ -44,6 +44,8 @@ export const features = {
   ],
   'exotics': [
     ['_equalByTag', 'eq'],
+    ['_getSymbols', 'stubArray'],
+    ['_getSymbolsIn', 'stubArray'],
     ['_getTag', '_baseGetTag'],
     ['_initCloneByTag', 'identity'],
     ['_mapToArray', 'stubArray'],
