@@ -1,4 +1,4 @@
 import { fill, toLength } from 'lodash';
 
-fill(Array(1));
+fill([]);
 toLength('1');

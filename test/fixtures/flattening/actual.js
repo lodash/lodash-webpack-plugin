@@ -1,3 +1,3 @@
 import { at } from 'lodash';
 
-at(['a', 'b', 'c'], 0, 2);
+at(['a', 'b', 'c'], [0, 2]);

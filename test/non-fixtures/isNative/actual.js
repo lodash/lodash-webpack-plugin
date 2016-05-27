@@ -1,4 +1,4 @@
 import { isMap, isNative } from 'lodash';
 
-isMap({});
-isNative(Array.isArray);
+isMap(1);
+isNative(1);

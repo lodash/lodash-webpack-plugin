@@ -1,3 +1,3 @@
 import { assign } from 'lodash';
 
-assign({ 'a': 1 }, { 'b': 1 });
+assign({ 'a': 1 }, { 'b': 2 });

@@ -1,3 +1,3 @@
 import { repeat } from 'lodash';
 
-repeat('0', 4);
+repeat('0', 3);

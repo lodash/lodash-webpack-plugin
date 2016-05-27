@@ -1,4 +1,3 @@
-import { range, toNumber } from 'lodash';
+import { partialRight } from 'lodash';
 
-range(10);
-toNumber('1');
+partialRight((a, b, c) => [a, b, c], 2, 3)(1);

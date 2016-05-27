@@ -1,3 +1,3 @@
-import { conforms, isString } from 'lodash';
+import { conforms, isNumber } from 'lodash';
 
-conforms({ 'a': isString })({ 'a': 1 });
+conforms({ 'a': isNumber })({ 'a': 1 });
