@@ -42,6 +42,18 @@ export const features = {
     ['_createWrapper', '_createPartialWrapper'],
     ['unary', '_baseUnary']
   ],
+  'exotics': [
+    ['_equalByTag', 'eq'],
+    ['_getTag', '_baseGetTag'],
+    ['_initCloneByTag', 'identity'],
+    ['_mapToArray', 'stubArray'],
+    ['_setToArray', 'stubArray'],
+    ['_setToPairs', 'stubArray'],
+    ['isArguments', 'stubFalse'],
+    ['isBuffer', 'stubFalse'],
+    ['isSymbol', 'stubFalse'],
+    ['isTypedArray', 'stubFalse']
+  ],
   'flattening': [
     ['_baseFlatten', 'head']
   ],
@@ -82,19 +94,7 @@ export const features = {
   'shorthands': [
     ['_baseIteratee', 'identity'],
     ['_isFlattenableIteratee', 'isArray']
-  ],
-  'uncommons': [
-    ['_equalByTag', 'eq'],
-    ['_getTag', '_baseGetTag'],
-    ['_initCloneByTag', 'identity'],
-    ['_mapToArray', 'stubArray'],
-    ['_setToArray', 'stubArray'],
-    ['_setToPairs', 'stubArray'],
-    ['isArguments', 'stubFalse'],
-    ['isBuffer', 'stubFalse'],
-    ['isSymbol', 'stubFalse'],
-    ['isTypedArray', 'stubFalse']
-  ],
+  ]
 };
 
 export const overrides = {
@@ -113,9 +113,9 @@ export const overrides = {
   'flattenDeep': { 'flattening': true },
   'flattenDepth': { 'flattening': true },
   'flip': { 'currying': true },
-  'isMap': { 'uncommons': true },
-  'isSymbol': { 'uncommons': true },
-  'isWeakMap': { 'uncommons': true },
+  'isMap': { 'exotics': true },
+  'isSymbol': { 'exotics': true },
+  'isWeakMap': { 'exotics': true },
   'partialRight': { 'currying': true },
   'rearg': { 'currying': true }
 };

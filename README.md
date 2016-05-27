@@ -65,6 +65,7 @@ The following features are removed by default _(biggest savings first)_:
 | `caching`      | Caches for methods like `_.cloneDeep`, `_.isEqual`, & `_.uniq`. |
 | `collections`  | Support for objects in “Collection” methods. |
 | `coercions`    | Coercion methods like `_.toInteger`, `_.toNumber`, & `_.toString`. |
+| `exotics`      | Support objects like buffers, maps, sets, symbols, typed arrays, etc. |
 | `guards`       | Guards for `arguments` objects, host objects, sparse arrays, & other edge cases. |
 | `flattening`   | Support for “flatten” methods & flattening rest arguments. |
 | `paths`        | Deep property path support for methods like `_.get`, `_.has`, & `_.set`. |
