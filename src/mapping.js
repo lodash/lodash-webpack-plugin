@@ -85,7 +85,8 @@ export const features = {
     ['_isKey', 'identity'],
     ['has', '_baseHas'],
     ['hasIn', '_baseHasIn'],
-    ['property', '_baseProperty']
+    ['property', '_baseProperty'],
+    ['propertyOf', '_basePropertyOf']
   ],
   'placeholders': [
     ['_composeArgs', 'identity'],
