@@ -52,8 +52,14 @@ export const features = {
     ['_setToArray', 'stubArray'],
     ['_setToPairs', 'stubArray'],
     ['isArguments', 'stubFalse'],
+    ['isArrayBuffer', 'baseIsArrayBuffer'],
     ['isBuffer', 'stubFalse'],
+    ['isDate', 'baseIsDate'],
+    ['isMap', 'baseIsMap'],
+    ['isRegExp', 'baseIsRegExp'],
+    ['isSet', 'baseIsSet'],
     ['isSymbol', 'stubFalse'],
+    ['isTypedArray', 'baseIsTypedArray'],
     ['isTypedArray', 'stubFalse']
   ],
   'flattening': [
