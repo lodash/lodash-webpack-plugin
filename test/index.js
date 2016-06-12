@@ -13,10 +13,10 @@ import webpack from 'webpack';
 const memFS = new MemoryFS;
 
 class Config {
-  constructor(entryPath, options={}) {
+  constructor(entryPath, pluginOptions={}) {
     merge(this, {
       'entry': entryPath,
-      'plugins': [new Plugin(options)]
+      'plugins': [new Plugin(pluginOptions)]
     }, baseConfig);
   }
 }
