@@ -37,7 +37,7 @@
   },
   "babel": {
     "plugins": [
-      "babel-plugin-add-module-exports"
+      "add-module-exports"
     ],
     "presets": [
       "es2015"
