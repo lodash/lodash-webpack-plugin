@@ -1,6 +1,6 @@
 {
   "name": "lodash-webpack-plugin",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Smaller modular Lodash builds.",
   "keywords": "webpack-plugin, lodash, modules",
   "repository": "lodash/lodash-webpack-plugin",
