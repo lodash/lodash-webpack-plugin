@@ -4,7 +4,11 @@ import path from 'path';
 import { stubs } from './listing';
 import { features, overrides } from './mapping';
 
-const rePath = RegExp('/lodash(?:/(?!fp/)|-es/|-amd/)');
+const reFwdSep = /\//g;
+const rsSysSep = _.escapeRegExp(path.sep);
+const normalize = string => string.replace(reFwdSep, rsSysSep);
+
+const rePath = RegExp(normalize('lodash(?:/(?!fp/)|-es/|-amd/)'));
 const reRequest = RegExp('^lodash(?:/|-es/|-amd/)\\w+$');
 
 function getPatterns(options) {
