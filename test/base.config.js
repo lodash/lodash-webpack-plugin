@@ -32,7 +32,7 @@ export const resolve = {
 };
 
 export const plugins = [
-  new webpack.optimize.OccurenceOrderPlugin,
+  new webpack.optimize.OccurrenceOrderPlugin,
   new webpack.optimize.UglifyJsPlugin
 ];
 
