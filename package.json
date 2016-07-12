@@ -35,14 +35,6 @@
     "mocha": "^2.5.3",
     "webpack": "^1.13.1"
   },
-  "babel": {
-    "plugins": [
-      "add-module-exports"
-    ],
-    "presets": [
-      "es2015"
-    ]
-  },
   "files": [
     "lib/index.js",
     "lib/listing.js",
