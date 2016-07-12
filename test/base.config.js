@@ -16,8 +16,7 @@ export const module = {
     'test': /\.js$/,
     'exclude': /node_modules/,
     'query': {
-      'plugins': ['lodash'],
-      'presets': ['es2015']
+      'plugins': ['lodash']
     }
   }]
 };
