@@ -39,6 +39,7 @@ export const features = {
     ['some', '_arraySome']
   ],
   'currying': [
+    ['_createWrap', '_createPartial'],
     ['_createWrapper', '_createPartialWrapper'],
     ['unary', '_baseUnary']
   ],
