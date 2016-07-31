@@ -2,7 +2,7 @@
   "name": "lodash-webpack-plugin",
   "version": "0.9.3",
   "description": "Smaller modular Lodash builds.",
-  "keywords": "webpack-plugin, lodash, modules",
+  "keywords": "lodash, modules, webpack-plugin",
   "repository": "lodash/lodash-webpack-plugin",
   "license": "MIT",
   "main": "lib/index.js",
