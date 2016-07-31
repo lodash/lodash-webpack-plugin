@@ -1,11 +1,10 @@
-# Contributing to webpack-plugin-lodash
+# Contributing to lodash-webpack-plugin
 
 Contributions are always welcome. Before contributing please
-[search the issue tracker](https://github.com/lodash/babel-plugin-lodash/issues);
+[search the issue tracker](https://github.com/lodash/lodash-webpack-plugin/issues);
 your issue may have already been discussed or fixed in `master`. To contribute,
-[fork](https://help.github.com/articles/fork-a-repo/) webpack-plugin-lodash,
-commit your changes, &
-[send a pull request](https://help.github.com/articles/using-pull-requests/).
+[fork](https://help.github.com/articles/fork-a-repo/) lodash-webpack-plugin, commit
+your changes, & [send a pull request](https://help.github.com/articles/using-pull-requests/).
 
 ## Pull Requests
 
@@ -15,7 +14,7 @@ Run unit tests from the command-line via `npm test`.
 
 ## Contributor License Agreement
 
-webpack-plugin-lodash is a member of the [jQuery Foundation](https://jquery.org/).
+lodash-webpack-plugin is a member of the [jQuery Foundation](https://jquery.org/).
 As such, we request that all contributors sign the jQuery Foundation
 [contributor license agreement (CLA)](https://contribute.jquery.org/CLA/).
 
