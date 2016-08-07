@@ -84,7 +84,8 @@ describe('reduced modular builds', function() {
           assert.ok(before.bytes > after.bytes, `gzip bytes: ${ after.bytes }`);
           assert.ok(before.count >= after.count, `module count: ${ after.count }`);
           done();
-        });
+        })
+        .catch(done);
     });
   });
 
@@ -102,6 +103,7 @@ describe('reduced modular builds', function() {
           assert.ok(!_.some(plugin.matches, pair => _.endsWith(pair[0], '_baseClone.js')));
           done();
         })
+        .catch(done);
     });
   });
 
@@ -119,6 +121,7 @@ describe('reduced modular builds', function() {
           assert.ok(!_.some(plugin.matches, pair => _.endsWith(pair[0], '_createWrapper.js')));
           done();
         })
+        .catch(done);
     });
   });
 
@@ -137,6 +140,7 @@ describe('reduced modular builds', function() {
           assert.ok(!_.some(plugin.matches, pair => rePath.test(pair[0])));
           done();
         })
+        .catch(done);
     });
   });
 });
