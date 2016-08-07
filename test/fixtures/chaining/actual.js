@@ -1,3 +1,3 @@
 import { flow } from 'lodash';
 
-_.flow(Number, String);
+flow(Number, String);
