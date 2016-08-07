@@ -71,8 +71,12 @@ export const features = {
     ['_isHostObject', 'stubFalse'],
     ['_isIterateeCall', 'stubFalse'],
     ['_isPrototype', 'stubFalse'],
+    ['_baseKeys', '_nativeKeys'],
+    ['_baseKeysIn', '_nativeKeysIn'],
     ['isNaN', 'baseIsNaN'],
     ['isNative', 'stubTrue'],
+    ['keys', '_nativeKeys'],
+    ['keysIn', '_nativeKeysIn'],
     ['keys', '_baseKeys'],
     ['keysIn', '_baseKeysIn'],
     ['times', '_baseTimes']
