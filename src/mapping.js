@@ -43,6 +43,9 @@ export const features = {
     ['_createWrapper', '_createPartialWrapper'],
     ['unary', '_baseUnary']
   ],
+  'deburring': [
+    ['deburr', 'identity']
+  ],
   'exotics': [
     ['_equalByTag', 'eq'],
     ['_getSymbols', 'stubArray'],
