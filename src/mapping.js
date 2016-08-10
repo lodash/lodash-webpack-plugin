@@ -111,6 +111,15 @@ export const features = {
   'shorthands': [
     ['_baseIteratee', 'identity'],
     ['_isFlattenableIteratee', 'isArray']
+  ],
+  'unicode': [
+    ['_hasUnicode', 'stubFalse'],
+    ['_hasUnicodeWord', 'stubFalse'],
+    ['_unicodeSize', '_asciiSize'],
+    ['_unicodeToArray', '_asciiToArray'],
+    ['_unicodeWords', '_asciiWords'],
+    ['stringSize', '_asciiSize'],
+    ['stringToArray', '_asciiToArray']
   ]
 };
 
