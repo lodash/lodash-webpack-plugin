@@ -66,10 +66,12 @@ The following features are removed by default _(biggest savings first)_:
 | `collections`  | Support objects in “Collection” methods. |
 | `exotics`      | Support objects like buffers, maps, sets, symbols, typed arrays, etc. |
 | `guards`       | Guards for host objects, sparse arrays, & other edge cases. |
+| `metadata`     | Metadata to reduce wrapping of bound, curried, & partially applied functions.<br>_(requires `currying`)_ |
+| `deburring`    | Support deburring letters. |
+| `unicode`      | Support Unicode symbols. |
+| `chaining`     | Components to support chain sequences. |
+| `memoizing`    | Support `_.memoize` & memoization. |
 | `coercions`    | Coercion methods like `_.toInteger`, `_.toNumber`, & `_.toString`. |
 | `flattening`   | Support “flatten” methods & flattening rest arguments. |
 | `paths`        | Deep property path support for methods like `_.get`, `_.has`, & `_.set`. |
-| `memoizing`    | Support `_.memoize` & memoization. |
-| `chaining`     | Components to support chain sequences. |
-| `metadata`     | Metadata to reduce wrapping of bound, curried, & partially applied functions.<br>_(requires `currying`)_ |
 | `placeholders` | Argument placeholder support for “bind”, “curry”, & “partial” methods.<br>_(requires `currying`)_ |
