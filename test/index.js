@@ -7,6 +7,7 @@ import { sync as gzipSize } from 'gzip-size';
 import MemoryFS from 'memory-fs';
 import path from 'path';
 import Plugin from '../src/index';
+import prettyBytes from 'pretty-bytes';
 import { promisify } from 'bluebird';
 import webpack from 'webpack';
 
@@ -81,8 +82,11 @@ describe('reduced modular builds', function() {
         .then(complete('after'))
         .then(() => {
           const { before, after } = data;
+          const delta = prettyBytes(before.bytes - after.bytes).replace(/ /g, '');
+
           assert.ok(before.bytes > after.bytes, `gzip bytes: ${ after.bytes }`);
           assert.ok(before.count >= after.count, `module count: ${ after.count }`);
+          this.ctx.test.title += ` (delta: ${ delta })`;
           done();
         })
         .catch(done);

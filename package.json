@@ -33,6 +33,7 @@
     "gzip-size": "^3.0.0",
     "memory-fs": "^0.3.0",
     "mocha": "^3.0.2",
+    "pretty-bytes": "^3.0.1",
     "webpack": "^1.13.1"
   },
   "files": [
