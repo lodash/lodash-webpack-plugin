@@ -40,7 +40,6 @@ export const features = {
   ],
   'currying': [
     ['_createWrap', '_createPartial'],
-    ['_createWrapper', '_createPartialWrapper'],
     ['unary', '_baseUnary']
   ],
   'deburring': [
@@ -59,11 +58,10 @@ export const features = {
     ['isArrayBuffer', 'baseIsArrayBuffer'],
     ['isBuffer', 'stubFalse'],
     ['isDate', 'baseIsDate'],
-    ['isMap', 'baseIsMap'],
+    ['isMap', 'stubFalse'],
     ['isRegExp', 'baseIsRegExp'],
-    ['isSet', 'baseIsSet'],
+    ['isSet', 'stubFalse'],
     ['isSymbol', 'stubFalse'],
-    ['isTypedArray', 'baseIsTypedArray'],
     ['isTypedArray', 'stubFalse']
   ],
   'flattening': [
@@ -80,8 +78,6 @@ export const features = {
     ['isNative', 'stubTrue'],
     ['keys', '_nativeKeys'],
     ['keysIn', '_nativeKeysIn'],
-    ['keys', '_baseKeys'],
-    ['keysIn', '_baseKeysIn'],
     ['times', '_baseTimes']
   ],
   'memoizing': [
@@ -110,8 +106,7 @@ export const features = {
     ['_replaceHolders', 'stubArray']
   ],
   'shorthands': [
-    ['_baseIteratee', 'identity'],
-    ['_isFlattenableIteratee', 'isArray']
+    ['_baseIteratee', 'identity']
   ],
   'unicode': [
     ['_hasUnicode', 'stubFalse'],
@@ -140,9 +135,6 @@ export const overrides = {
   'flattenDeep': { 'flattening': true },
   'flattenDepth': { 'flattening': true },
   'flip': { 'currying': true },
-  'isMap': { 'exotics': true },
-  'isSymbol': { 'exotics': true },
-  'isWeakMap': { 'exotics': true },
   'partialRight': { 'currying': true },
   'rearg': { 'currying': true }
 };
