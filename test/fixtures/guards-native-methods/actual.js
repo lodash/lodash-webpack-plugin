@@ -1,3 +1,3 @@
-import { isMap } from 'lodash';
+import { clone } from 'lodash';
 
-isMap({});
+clone({});
