@@ -63,8 +63,9 @@ export default class LodashModuleReplacementPlugin {
       nmf.plugin('after-resolve', (data, callback) => {
         if (data) {
           data.resource = resolvePath(data);
+          return callback(null, data);
         }
-        return data ? callback(null, data) : callback();
+        return callback();
       });
     });
   }
