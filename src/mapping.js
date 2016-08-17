@@ -50,6 +50,8 @@ export const features = {
   ],
   'exotics': [
     ['_equalByTag', 'eq'],
+    ['_getAllKeys', '_nativeKeys'],
+    ['_getAllKeysIn', '_nativeKeysIn'],
     ['_getSymbols', 'stubArray'],
     ['_getSymbolsIn', 'stubArray'],
     ['_getTag', '_baseGetTag'],
