@@ -8,8 +8,10 @@ const reFwdSep = /\//g;
 const rsSysSep = _.escapeRegExp(path.sep);
 const normalize = string => string.replace(reFwdSep, rsSysSep);
 
-const rePath = RegExp(normalize('lodash(?:/(?!fp/)|-es/|-amd/)'));
-const reRequest = RegExp('^lodash(?:/|-es/|-amd/)\\w+$');
+const reLodashRes = RegExp(normalize('lodash(?:/(?!fp/)|-amd/|-es/|\\.\\w+/)'));
+const reExplicitReq = RegExp('^lodash(?:/|-amd/|-es/|\\.\\w+/)\\w+$');
+
+const lodashRoot = path.dirname(require.resolve('lodash'));
 
 function getPatterns(options) {
   const result = [];
@@ -33,10 +35,14 @@ export default class LodashModuleReplacementPlugin {
   apply(compiler) {
     const resolvePath = _.memoize(({ rawRequest, resource }) => {
       let result = resource;
-      if (!rePath.test(resource)) {
+      if (!reLodashRes.test(resource)) {
         return result;
       }
-      if (reRequest.test(rawRequest)) {
+      const isExplicit = reExplicitReq.test(rawRequest);
+      const resName = path.basename(resource, '.js');
+      const resRoot = path.dirname(resource);
+
+      if (isExplicit) {
         // Apply any feature set overrides for explicitly requested modules.
         const override = overrides[path.basename(rawRequest, '.js')];
         if (!_.isMatch(this.options, override)) {
@@ -45,12 +51,19 @@ export default class LodashModuleReplacementPlugin {
       }
       _.each(this.patterns, pair => {
         // Replace matches as long as they aren't explicit requests for stubbed modules.
-        if ((path.basename(resource, '.js') != pair[0]) ||
-            (reRequest.test(rawRequest) && _.includes(stubs, pair[1]))) {
+        const isStubbed = _.includes(stubs, pair[1]);
+        if (resName != pair[0] || (isExplicit && isStubbed)) {
           return;
         }
-        const modulePath = path.join(path.dirname(resource), `${ pair[1] }.js`);
-        if (fs.existsSync(modulePath)) {
+        const moduleFilename = `${ pair[1] }.js`;
+        let modulePath = path.join(resRoot, moduleFilename);
+        let exists = fs.existsSync(modulePath);
+
+        if (isStubbed && !exists) {
+          exists = true;
+          modulePath = path.join(lodashRoot, moduleFilename);
+        }
+        if (exists) {
           result = modulePath;
           this.matches.push([resource, result]);
           return false;
