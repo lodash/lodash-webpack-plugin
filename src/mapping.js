@@ -93,6 +93,7 @@ export const features = {
     ['_getData', 'noop'],
     ['_mergeData', 'identity'],
     ['_setData', 'identity'],
+    ['_setToString', 'identity'],
     ['_setWrapToString', 'identity']
   ],
   'paths': [
