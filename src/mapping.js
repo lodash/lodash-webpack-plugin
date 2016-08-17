@@ -1,7 +1,10 @@
 export const features = {
   'caching': [
+    ['_baseIndexOf', '_strictIndexOf'],
+    ['_cacheHas', '_arrayIncludes'],
     ['_createSet', 'noop'],
     ['_MapCache', '_ListCache'],
+    ['_SetCache', 'identity'],
     ['_Stack', '_ListCache']
   ],
   'chaining': [
