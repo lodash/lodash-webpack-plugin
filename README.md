@@ -9,7 +9,7 @@ by shrinking its cherry-picked builds even further!
 
 ## Install
 
-```bash
+```shell
 $ npm i --save lodash
 $ npm i --save-dev lodash-webpack-plugin babel-core babel-loader babel-plugin-lodash babel-preset-es2015 webpack
 ```
