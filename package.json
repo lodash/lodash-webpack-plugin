@@ -37,8 +37,6 @@
     "webpack": "^1.13.1"
   },
   "files": [
-    "lib/index.js",
-    "lib/listing.js",
-    "lib/mapping.js"
+    "lib"
   ]
 }
