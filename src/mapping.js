@@ -108,8 +108,6 @@ export const features = {
     ['propertyOf', '_basePropertyOf']
   ],
   'placeholders': [
-    ['_composeArgs', 'identity'],
-    ['_composeArgsRight', 'identity'],
     ['_getHolder', 'noop'],
     ['_replaceHolders', 'stubArray']
   ],
