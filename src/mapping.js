@@ -89,6 +89,7 @@ export const features = {
     ['times', '_baseTimes']
   ],
   'memoizing': [
+    ['_memoizeCapped', 'identity'],
     ['memoize', 'identity']
   ],
   'metadata': [
