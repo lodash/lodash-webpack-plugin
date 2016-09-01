@@ -39,7 +39,8 @@ export const features = {
     ['map', '_arrayMap'],
     ['reduce', '_arrayReduce'],
     ['reduceRight', '_arrayReduceRight'],
-    ['some', '_arraySome']
+    ['sample', '_arraySample'],
+    ['some', '_arraySome'],
   ],
   'currying': [
     ['_createWrap', '_createPartial'],
