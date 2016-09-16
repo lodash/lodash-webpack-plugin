@@ -40,6 +40,8 @@ export const features = {
     ['reduce', '_arrayReduce'],
     ['reduceRight', '_arrayReduceRight'],
     ['sample', '_arraySample'],
+    ['sampleSize', '_arraySampleSize'],
+    ['shuffle', '_arrayShuffle'],
     ['some', '_arraySome'],
   ],
   'currying': [
