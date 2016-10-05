@@ -4,7 +4,7 @@ export const features = {
     ['_cacheHas', '_arrayIncludes'],
     ['_createSet', 'noop'],
     ['_MapCache', '_ListCache'],
-    ['_SetCache', 'identity'],
+    ['_SetCache', 'castArray'],
     ['_Stack', '_ListCache']
   ],
   'chaining': [
