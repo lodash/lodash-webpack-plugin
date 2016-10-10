@@ -52,12 +52,13 @@ export const features = {
     ['deburr', 'identity']
   ],
   'exotics': [
+    ['_baseGetTag', '_objectToString'],
     ['_equalByTag', 'eq'],
     ['_getAllKeys', '_nativeKeys'],
     ['_getAllKeysIn', '_nativeKeysIn'],
     ['_getSymbols', 'stubArray'],
     ['_getSymbolsIn', 'stubArray'],
-    ['_getTag', '_baseGetTag'],
+    ['_getTag', '_objectToString'],
     ['_initCloneByTag', 'identity'],
     ['_mapToArray', 'stubArray'],
     ['_setToArray', 'stubArray'],
