@@ -21,12 +21,12 @@
     "lodash": "^4.16.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.16.0",
-    "babel-core": "^6.17.0",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-add-module-exports": "~0.2.1",
     "babel-plugin-lodash": "^3.2.9",
-    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-es2015": "^6.18.0",
     "bluebird": "^3.4.5",
     "chai": "^3.5.0",
     "glob": "^7.1.1",
