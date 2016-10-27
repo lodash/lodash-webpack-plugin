@@ -83,6 +83,7 @@ export const features = {
     ['_isPrototype', 'stubFalse'],
     ['_baseKeys', '_nativeKeys'],
     ['_baseKeysIn', '_nativeKeysIn'],
+    ['_castFunction', 'identity'],
     ['_castRest', 'identity'],
     ['_shortOut', 'identity'],
     ['isNaN', 'baseIsNaN'],
