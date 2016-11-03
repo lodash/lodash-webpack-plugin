@@ -113,6 +113,24 @@ describe('reduced modular builds', function() {
 
   /*--------------------------------------------------------------------------*/
 
+  _.each(glob.sync(path.join(__dirname, 'coercions-fixtures/*/')), testPath => {
+    const testName = getTestName(testPath);
+    const actualPath = path.join(testPath, 'actual.js');
+    const config = new Config(actualPath);
+    const plugin = config.plugins[0];
+
+    it(`should enable coercions for explicit \`${ testName }\` use`, done => {
+      new Compiler(config).run()
+        .then(() => {
+          assert.ok(!_.some(plugin.matches, pair => /to(?:Number|String)\.js$/.test(pair[0])));
+          done();
+        })
+        .catch(done);
+    });
+  });
+
+  /*--------------------------------------------------------------------------*/
+
   _.each(glob.sync(path.join(__dirname, 'curry-fixtures/*/')), testPath => {
     const testName = getTestName(testPath);
     const actualPath = path.join(testPath, 'actual.js');
