@@ -147,6 +147,7 @@ export const overrides = {
   'flattenDeep': { 'flattening': true },
   'flattenDepth': { 'flattening': true },
   'flip': { 'currying': true },
+  'parseInt': { 'coercions': true },
   'partialRight': { 'currying': true },
   'rearg': { 'currying': true }
 };
