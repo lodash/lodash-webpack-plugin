@@ -79,6 +79,7 @@ export const features = {
   ],
   'guards': [
     ['_getNative', '_getValue'],
+    ['_getRawTag', '_objectToString'],
     ['_isIterateeCall', 'stubFalse'],
     ['_isPrototype', 'stubFalse'],
     ['_baseKeys', '_nativeKeys'],
