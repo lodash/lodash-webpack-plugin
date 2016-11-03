@@ -71,7 +71,7 @@ The following features are removed by default _(biggest savings first)_:
 | `unicode`      | Support Unicode symbols. |
 | `chaining`     | Components to support chain sequences. |
 | `memoizing`    | Support `_.memoize` & memoization. |
-| `coercions`    | Coercion methods like `_.toInteger`, `_.toNumber`, & `_.toString`. |
+| `coercions`    | Support for coercing values to integers, numbers, & strings. |
 | `flattening`   | Support “flatten” methods & flattening rest arguments. |
 | `paths`        | Deep property path support for methods like `_.get`, `_.has`, & `_.set`. |
 | `placeholders` | Argument placeholder support for “bind”, “curry”, & “partial” methods.<br>_(requires `currying`)_ |
