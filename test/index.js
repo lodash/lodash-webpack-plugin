@@ -149,6 +149,24 @@ describe('reduced modular builds', function() {
 
   /*--------------------------------------------------------------------------*/
 
+  _.each(glob.sync(path.join(__dirname, 'flattening-fixtures/*/')), testPath => {
+    const testName = getTestName(testPath);
+    const actualPath = path.join(testPath, 'actual.js');
+    const config = new Config(actualPath);
+    const plugin = config.plugins[0];
+
+    it(`should enable coercions for explicit \`${ testName }\` use`, done => {
+      new Compiler(config).run()
+        .then(() => {
+          assert.ok(!_.some(plugin.matches, pair => _.endsWith(pair[0], '_baseFlatten.js')));
+          done();
+        })
+        .catch(done);
+    });
+  });
+
+  /*--------------------------------------------------------------------------*/
+
   _.each(glob.sync(path.join(__dirname, 'non-fixtures/*/')), testPath => {
     const testName = getTestName(testPath);
     const rePath = RegExp('/' + testName + '(?:/|\\.js$)');
