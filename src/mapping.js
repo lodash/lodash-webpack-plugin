@@ -150,7 +150,8 @@ export const overrides = {
   'flip': { 'currying': true },
   'parseInt': { 'coercions': true },
   'partialRight': { 'currying': true },
-  'rearg': { 'currying': true }
+  'rearg': { 'currying': true },
+  'union': { 'flattening': true },
 };
 
 export default { features, overrides };
