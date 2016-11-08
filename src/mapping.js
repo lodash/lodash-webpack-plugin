@@ -156,7 +156,10 @@ export const overrides = {
   'rearg': { 'currying': true },
   'union': { 'flattening': true },
   'unionBy': { 'flattening': true },
-  'unionWith': { 'flattening': true }
+  'unionWith': { 'flattening': true },
+  'xor': { 'flattening': true },
+  'xorBy': { 'flattening': true },
+  'xorWith': { 'flattening': true }
 };
 
 export default { features, overrides };
