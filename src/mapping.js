@@ -152,6 +152,8 @@ export const overrides = {
   'partialRight': { 'currying': true },
   'rearg': { 'currying': true },
   'union': { 'flattening': true },
+  'unionBy': { 'flattening': true },
+  'unionWith': { 'flattening': true }
 };
 
 export default { features, overrides };
