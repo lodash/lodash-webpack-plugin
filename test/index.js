@@ -155,7 +155,7 @@ describe('reduced modular builds', function() {
     const config = new Config(actualPath);
     const plugin = config.plugins[0];
 
-    it(`should enable coercions for explicit \`${ testName }\` use`, done => {
+    it(`should enable flattening for explicit \`${ testName }\` use`, done => {
       new Compiler(config).run()
         .then(() => {
           assert.ok(!_.some(plugin.matches, pair => _.endsWith(pair[0], '_baseFlatten.js')));
