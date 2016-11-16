@@ -25,7 +25,7 @@
     "babel-loader": "^6.2.7",
     "babel-plugin-add-module-exports": "~0.2.1",
     "babel-plugin-lodash": "^3.2.9",
-    "babel-preset-env": "0.0.7",
+    "babel-preset-env": "0.0.8",
     "bluebird": "^3.4.5",
     "chai": "^3.5.0",
     "glob": "^7.1.1",
