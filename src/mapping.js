@@ -109,6 +109,7 @@ export const features = {
     ['_baseGet', '_getValue'],
     ['_castPath', 'identity'],
     ['_isKey', 'identity'],
+    ['_parent', 'identity'],
     ['has', '_baseHas'],
     ['hasIn', '_baseHasIn'],
     ['property', '_baseProperty'],
