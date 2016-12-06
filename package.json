@@ -30,7 +30,7 @@
     "chai": "^3.5.0",
     "glob": "^7.1.1",
     "gzip-size": "^3.0.0",
-    "memory-fs": "^0.3.0",
+    "memory-fs": "^0.4.0",
     "mocha": "^3.2.0",
     "pretty-bytes": "^4.0.2",
     "webpack": "^1.13.3"
