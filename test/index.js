@@ -6,9 +6,9 @@ import glob from 'glob';
 import { sync as gzipSize } from 'gzip-size';
 import MemoryFS from 'memory-fs';
 import path from 'path';
+import pify from 'pify';
 import Plugin from '../src/index';
 import prettyBytes from 'pretty-bytes';
-import { promisify } from 'bluebird';
 import webpack from 'webpack';
 
 const memFS = new MemoryFS;
@@ -28,7 +28,7 @@ class Compiler {
   constructor(config={}) {
     this.compiler = webpack(config);
     this.compiler.outputFileSystem = memFS;
-    this.compiler.run = promisify(this.compiler.run, { 'context': this.compiler });
+    this.compiler.run = pify(this.compiler.run.bind(this.compiler));
   }
 
   run() {
