@@ -154,6 +154,7 @@ export const overrides = {
   'flip': { 'currying': true },
   'parseInt': { 'coercions': true },
   'partialRight': { 'currying': true },
+  'pick': { 'paths': true },
   'rearg': { 'currying': true },
   'union': { 'flattening': true },
   'unionBy': { 'flattening': true },
