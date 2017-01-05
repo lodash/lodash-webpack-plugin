@@ -17,23 +17,23 @@
     "test": "mocha --check-leaks --slow 1e3 --compilers js:babel-core/register"
   },
   "dependencies": {
-    "lodash": "^4.17.2"
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.7",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
     "babel-plugin-add-module-exports": "~0.2.1",
-    "babel-plugin-lodash": "^3.2.9",
-    "babel-preset-env": "0.0.8",
+    "babel-plugin-lodash": "^3.2.11",
+    "babel-preset-env": "^1.1.5",
     "chai": "^3.5.0",
     "glob": "^7.1.1",
     "gzip-size": "^3.0.0",
-    "memory-fs": "^0.3.0",
-    "mocha": "^3.1.2",
+    "memory-fs": "^0.4.1",
+    "mocha": "^3.2.0",
     "pify": "^2.3.0",
     "pretty-bytes": "^4.0.2",
-    "webpack": "^1.13.3"
+    "webpack": "^1.14.0"
   },
   "files": [
     "lib"
