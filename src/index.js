@@ -28,12 +28,13 @@ function getPatterns(options) {
 class LodashModuleReplacementPlugin {
   constructor(options) {
     this.matches = [];
-    this.options = _.assign({}, options);
+    this.options = Object.assign({}, options);
     this.patterns = getPatterns(this.options);
+    this.resolve = this.resolve.bind(this);
   }
 
   apply(compiler) {
-    const resolve = _.memoize(this.resolve.bind(this), ({ resource }) => resource);
+    const resolve = _.memoize(this.resolve, ({ resource }) => resource);
     compiler.plugin('normal-module-factory', nmf => {
       nmf.plugin('after-resolve', (data, callback) => {
         if (data) {
@@ -58,7 +59,7 @@ class LodashModuleReplacementPlugin {
       // Apply any feature set overrides for explicitly requested modules.
       const override = overrides[path.basename(rawRequest, '.js')];
       if (!_.isMatch(this.options, override)) {
-        this.patterns = getPatterns(_.assign(this.options, override));
+        this.patterns = getPatterns(Object.assign(this.options, override));
       }
     }
     _.each(this.patterns, pair => {
@@ -95,12 +96,12 @@ export default function Plugin(nodeResolve, options) {
   // For Rollup.
   const _resolveId = nodeResolve.resolveId;
   const resolver = new LodashModuleReplacementPlugin(options);
-  const resolve = _.memoize(resolver.resolve.bind(resolver), ({ resource }) => resource);
+  const resolve = _.memoize(resolver.resolve, ({ resource }) => resource);
 
-  return _.assign(nodeResolve, {
+  return Object.assign({}, nodeResolve, {
     resolveId(importee, importer) {
       return _resolveId(importee, importer)
-        .then(id => resolve({ rawRequest: importee, resource: id }))
-     }
-   });
+        .then(id => resolve({ rawRequest: importee, resource: id }));
+    }
+  });
 };
