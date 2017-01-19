@@ -4,14 +4,13 @@ import path from 'path';
 import { stubs } from './listing';
 import { features, overrides } from './mapping';
 
-const reFwdSep = /\//g;
-const rsSysSep = _.escapeRegExp(path.sep);
+const lodashRoot = path.dirname(require.resolve('lodash'));
 const normalize = string => string.replace(reFwdSep, rsSysSep);
 
+const reFwdSep = /\//g;
+const rsSysSep = _.escapeRegExp(path.sep);
 const reLodashRes = RegExp(normalize('lodash(?:/(?!fp/)|-amd/|-es/|\\.\\w+/)'));
 const reExplicitReq = RegExp('^lodash(?:/|-amd/|-es/|\\.\\w+/)\\w+$');
-
-const lodashRoot = path.dirname(require.resolve('lodash'));
 
 function getPatterns(options) {
   const result = [];
