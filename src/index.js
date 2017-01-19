@@ -61,7 +61,7 @@ class LodashModuleReplacementPlugin {
         this.patterns = getPatterns(Object.assign(this.options, override));
       }
     }
-    _.each(this.patterns, pair => {
+    this.patterns.forEach(pair => {
       // Replace matches as long as they aren't explicit requests for stubbed modules.
       const isStubbed = _.includes(stubs, pair[1]);
       if (resName != pair[0] || (isExplicit && isStubbed)) {
