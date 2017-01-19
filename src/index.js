@@ -100,7 +100,7 @@ export default function Plugin(nodeResolve, options) {
   return Object.assign({}, nodeResolve, {
     resolveId(importee, importer) {
       return _resolveId(importee, importer)
-        .then(id => resolve({ rawRequest: importee, resource: id }));
+        .then(id => resolve({ 'rawRequest': importee, 'resource': id }));
     }
   });
 };
