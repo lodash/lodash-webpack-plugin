@@ -11,20 +11,18 @@ export const output = {
 };
 
 export const module = {
-  'loaders': [{
-    'loader': 'babel',
+  'rules': [{
+    'loader': 'babel-loader',
     'test': /\.js$/,
     'exclude': /node_modules/,
-    'query': {
+    'options': {
       'plugins': ['lodash']
     }
   }]
 };
 
 export const resolve = {
-  'extensions': ['', '.js'],
-  'modulesDirectories': [],
-  'root': [
+  'modules': [
     path.join(rootPath, 'node_modules'),
     path.join(rootPath, 'test/fixtures')
   ]
