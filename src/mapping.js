@@ -135,6 +135,7 @@ export const features = {
 
 export const overrides = {
   'ary': { 'currying': true },
+  'camelCase': { 'unicode': true },
   'clone': { 'cloning': true },
   'cloneDeep': { 'cloning': true },
   'cloneDeepWith': { 'cloning': true },
@@ -152,13 +153,18 @@ export const overrides = {
   'flattenDeep': { 'flattening': true },
   'flattenDepth': { 'flattening': true },
   'flip': { 'currying': true },
+  'kebabCase': { 'unicode': true },
+  'lowerCase': { 'unicode': true },
   'parseInt': { 'coercions': true },
   'partialRight': { 'currying': true },
   'pick': { 'paths': true },
   'rearg': { 'currying': true },
+  'snakeCase': { 'unicode': true },
+  'startCase': { 'unicode': true },
   'union': { 'flattening': true },
   'unionBy': { 'flattening': true },
   'unionWith': { 'flattening': true },
+  'upperCase': { 'unicode': true },
   'xor': { 'flattening': true },
   'xorBy': { 'flattening': true },
   'xorWith': { 'flattening': true }
