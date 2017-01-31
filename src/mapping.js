@@ -164,6 +164,7 @@ export const overrides = {
   'union': { 'flattening': true },
   'unionBy': { 'flattening': true },
   'unionWith': { 'flattening': true },
+  'uniqueId': { 'coercions': true },
   'upperCase': { 'unicode': true },
   'xor': { 'flattening': true },
   'xorBy': { 'flattening': true },
