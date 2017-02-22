@@ -1,4 +1,4 @@
-# lodash-webpack-plugin v0.11.1
+# lodash-webpack-plugin v0.11.2
 
 Create smaller Lodash builds by replacing [feature sets](#feature-sets) of modules
 with [noop](https://lodash.com/docs#noop), [identity](https://lodash.com/docs#identity),
