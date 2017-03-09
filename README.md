@@ -11,7 +11,7 @@ by shrinking its cherry-picked builds even further!
 
 ```shell
 $ npm i --save lodash
-$ npm i --save-dev lodash-webpack-plugin babel-core babel-loader babel-plugin-lodash babel-preset-es2015 webpack
+$ npm i --save-dev lodash-webpack-plugin babel-core babel-loader babel-plugin-lodash babel-preset-env webpack
 ```
 
 ## Example
@@ -33,7 +33,7 @@ module.exports = {
       'exclude': /node_modules/,
       'query': {
         'plugins': ['lodash'],
-        'presets': ['es2015']
+        'presets': [['env', { 'modules': false, 'targets': { 'node': 4 } }]]
       }
     }]
   },
