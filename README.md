@@ -27,11 +27,11 @@ var webpack = require('webpack');
 
 module.exports = {
   'module': {
-    'loaders': [{
-      'loader': 'babel',
+    'rules': [{
+      'use': 'babel',
       'test': /\.js$/,
       'exclude': /node_modules/,
-      'query': {
+      'options': {
         'plugins': ['lodash'],
         'presets': [['env', { 'modules': false, 'targets': { 'node': 4 } }]]
       }
@@ -39,7 +39,6 @@ module.exports = {
   },
   'plugins': [
     new LodashModuleReplacementPlugin,
-    new webpack.optimize.OccurrenceOrderPlugin,
     new webpack.optimize.UglifyJsPlugin
   ]
 };
