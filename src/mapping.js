@@ -107,7 +107,7 @@ export const features = {
   ],
   'paths': [
     ['_baseGet', '_getValue'],
-    ['_castPath', 'identity'],
+    ['_castPath', 'castArray'],
     ['_isKey', 'identity'],
     ['_parent', 'identity'],
     ['has', '_baseHas'],
