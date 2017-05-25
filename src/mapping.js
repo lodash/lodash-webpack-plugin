@@ -153,6 +153,7 @@ export const overrides = {
   'flattenDeep': { 'flattening': true },
   'flattenDepth': { 'flattening': true },
   'flip': { 'currying': true },
+  'isInteger': { 'coercions': true },
   'kebabCase': { 'unicode': true },
   'lowerCase': { 'unicode': true },
   'parseInt': { 'coercions': true },
