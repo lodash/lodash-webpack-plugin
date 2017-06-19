@@ -33,7 +33,7 @@
     "mocha": "^3.4.2",
     "pify": "^3.0.0",
     "pretty-bytes": "^4.0.2",
-    "webpack": "^2.6.1"
+    "webpack": "^3.0.0"
   },
   "files": [
     "lib"
