@@ -42,7 +42,7 @@ export const features = {
     ['sample', '_arraySample'],
     ['sampleSize', '_arraySampleSize'],
     ['shuffle', '_arrayShuffle'],
-    ['some', '_arraySome'],
+    ['some', '_arraySome']
   ],
   'currying': [
     ['_createWrap', '_createPartial'],
@@ -131,7 +131,7 @@ export const features = {
     ['stringSize', '_asciiSize'],
     ['stringToArray', '_asciiToArray']
   ]
-};
+}
 
 export const overrides = {
   'ary': { 'currying': true },
@@ -170,6 +170,6 @@ export const overrides = {
   'xor': { 'flattening': true },
   'xorBy': { 'flattening': true },
   'xorWith': { 'flattening': true }
-};
+}
 
-export default { features, overrides };
+export default { features, overrides }
