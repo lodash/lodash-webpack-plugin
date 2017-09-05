@@ -1,87 +1,87 @@
-import _ from 'lodash';
-import fs from 'fs';
-import path from 'path';
-import { stubs } from './listing';
-import { features, overrides } from './mapping';
+import _ from 'lodash'
+import fs from 'fs'
+import path from 'path'
+import { stubs } from './listing'
+import { features, overrides } from './mapping'
 
-const lodashRoot = path.dirname(require.resolve('lodash'));
-const normalize = string => string.replace(reFwdSep, rsSysSep);
+const lodashRoot = path.dirname(require.resolve('lodash'))
+const normalize = (string) => string.replace(reFwdSep, rsSysSep)
 
-const reFwdSep = /\//g;
-const rsSysSep = _.escapeRegExp(path.sep);
-const reLodashRes = RegExp(normalize('lodash(?:/(?!fp/)|-amd/|-es/|\\.\\w+/)'));
-const reExplicitReq = RegExp('^lodash(?:/|-amd/|-es/|\\.\\w+/)\\w+$');
+const reFwdSep = /\//g
+const rsSysSep = _.escapeRegExp(path.sep)
+const reLodashRes = RegExp(normalize('lodash(?:/(?!fp/)|-amd/|-es/|\\.\\w+/)'))
+const reExplicitReq = RegExp('^lodash(?:/|-amd/|-es/|\\.\\w+/)\\w+$')
 
 function getPatterns(options) {
-  const result = [];
+  const result = []
   _.forOwn(features, (pairs, key) => {
     if (!options[key]) {
-      result.push(...pairs);
+      result.push(...pairs)
     }
-  });
-  return result;
+  })
+  return result
 }
 
 /*----------------------------------------------------------------------------*/
 
 class LodashModuleReplacementPlugin {
   constructor(options) {
-    this.matches = [];
-    this.options = Object.assign({}, options);
-    this.patterns = getPatterns(this.options);
-    this.resolve = this.resolve.bind(this);
+    this.matches = []
+    this.options = Object.assign({}, options)
+    this.patterns = getPatterns(this.options)
+    this.resolve = this.resolve.bind(this)
   }
 
   apply(compiler) {
-    const resolve = _.memoize(this.resolve, ({ resource }) => resource);
-    compiler.plugin('normal-module-factory', nmf => {
+    const resolve = _.memoize(this.resolve, ({ resource }) => resource)
+    compiler.plugin('normal-module-factory', (nmf) => {
       nmf.plugin('after-resolve', (data, callback) => {
         if (data) {
-          data.resource = resolve(data);
-          return callback(null, data);
+          data.resource = resolve(data)
+          return callback(null, data)
         }
-        return callback();
-      });
-    });
+        return callback()
+      })
+    })
   }
 
   resolve({ rawRequest, resource }) {
-    let result = resource;
+    let result = resource
     if (!reLodashRes.test(resource)) {
-      return result;
+      return result
     }
-    const isExplicit = reExplicitReq.test(rawRequest);
-    const resName = path.basename(resource, '.js');
-    const resRoot = path.dirname(resource);
+    const isExplicit = reExplicitReq.test(rawRequest)
+    const resName = path.basename(resource, '.js')
+    const resRoot = path.dirname(resource)
 
     if (isExplicit) {
       // Apply any feature set overrides for explicitly requested modules.
-      const override = overrides[path.basename(rawRequest, '.js')];
+      const override = overrides[path.basename(rawRequest, '.js')]
       if (!_.isMatch(this.options, override)) {
-        this.patterns = getPatterns(Object.assign(this.options, override));
+        this.patterns = getPatterns(Object.assign(this.options, override))
       }
     }
-    this.patterns.forEach(pair => {
+    this.patterns.forEach((pair) => {
       // Replace matches as long as they aren't explicit requests for stubbed modules.
-      const isStubbed = _.includes(stubs, pair[1]);
+      const isStubbed = _.includes(stubs, pair[1])
       if (resName != pair[0] || (isExplicit && isStubbed)) {
-        return;
+        return
       }
-      const moduleFilename = `${ pair[1] }.js`;
-      let modulePath = path.join(resRoot, moduleFilename);
-      let exists = fs.existsSync(modulePath);
+      const moduleFilename = `${pair[1]}.js`
+      let modulePath = path.join(resRoot, moduleFilename)
+      let exists = fs.existsSync(modulePath)
 
       if (isStubbed && !exists) {
-        exists = true;
-        modulePath = path.join(lodashRoot, moduleFilename);
+        exists = true
+        modulePath = path.join(lodashRoot, moduleFilename)
       }
       if (exists) {
-        result = modulePath;
-        this.matches.push([resource, result]);
-        return false;
+        result = modulePath
+        this.matches.push([resource, result])
+        return false
       }
-    });
-    return result;
+    })
+    return result
   }
 };
 
@@ -90,17 +90,17 @@ class LodashModuleReplacementPlugin {
 export default function Plugin(nodeResolve, options) {
   // For Webpack.
   if (this instanceof Plugin) {
-    return new LodashModuleReplacementPlugin(nodeResolve);
+    return new LodashModuleReplacementPlugin(nodeResolve)
   }
   // For Rollup.
-  const _resolveId = nodeResolve.resolveId;
-  const resolver = new LodashModuleReplacementPlugin(options);
-  const resolve = _.memoize(resolver.resolve, ({ resource }) => resource);
+  const _resolveId = nodeResolve.resolveId
+  const resolver = new LodashModuleReplacementPlugin(options)
+  const resolve = _.memoize(resolver.resolve, ({ resource }) => resource)
 
   return Object.assign({}, nodeResolve, {
     resolveId(importee, importer) {
       return _resolveId(importee, importer)
-        .then(id => resolve({ 'rawRequest': importee, 'resource': id }));
+        .then((id) => resolve({ 'rawRequest': importee, 'resource': id }))
     }
-  });
+  })
 };

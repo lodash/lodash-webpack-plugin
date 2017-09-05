@@ -6,6 +6,6 @@ export const stubs = [
   'stubObject',
   'stubString',
   'stubTrue'
-];
+]
 
-export default { stubs };
+export default { stubs }
