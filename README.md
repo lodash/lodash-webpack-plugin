@@ -28,7 +28,7 @@ var webpack = require('webpack');
 module.exports = {
   'module': {
     'rules': [{
-      'use': 'babel',
+      'use': 'babel-loader',
       'test': /\.js$/,
       'exclude': /node_modules/,
       'options': {
