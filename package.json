@@ -31,7 +31,7 @@
     "eslint": "^4.3.0",
     "eslint-plugin-import": "^2.7.0",
     "glob": "^7.1.1",
-    "gzip-size": "^3.0.0",
+    "gzip-size": "^4.0.1",
     "memory-fs": "^0.4.1",
     "mocha": "^3.4.2",
     "pify": "^3.0.0",
