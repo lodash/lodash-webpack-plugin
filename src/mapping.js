@@ -146,6 +146,7 @@ export const overrides = {
   'difference': { 'flattening': true },
   'differenceBy': { 'flattening': true },
   'differenceWith': { 'flattening': true },
+  'fill': { 'coercions': true },
   'flatMap': { 'flattening': true },
   'flatMapDeep': { 'flattening': true },
   'flatMapDepth': { 'flattening': true },
