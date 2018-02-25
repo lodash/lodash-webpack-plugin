@@ -38,8 +38,8 @@ module.exports = {
     }]
   },
   'plugins': [
-    new LodashModuleReplacementPlugin,
-    new webpack.optimize.UglifyJsPlugin
+    new LodashModuleReplacementPlugin(),
+    new webpack.optimize.UglifyJsPlugin()
   ]
 };
 ```
