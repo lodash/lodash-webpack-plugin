@@ -44,6 +44,9 @@
   "peerDependencies": {
     "webpack": "^4.0.0"
   },
+  "engines": {
+    "node": ">=6.11.5"
+  },
   "files": [
     "lib"
   ]
