@@ -34,8 +34,8 @@ class LodashModuleReplacementPlugin {
 
   apply(compiler) {
     const resolve = _.memoize(this.resolve, ({ resource }) => resource)
-    compiler.plugin('normal-module-factory', (nmf) => {
-      nmf.plugin('after-resolve', (data, callback) => {
+    compiler.hooks.normalModuleFactory.tap('normal-module-factory', (nmf) => {
+      nmf.hooks.afterResolve.tapAsync('after-resolve', (data, callback) => {
         if (data) {
           data.resource = resolve(data)
           return callback(null, data)
