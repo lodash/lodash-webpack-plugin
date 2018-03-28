@@ -5,6 +5,16 @@ node_js:
   - 6
   - 4
 
+env:
+  - WEBPACK_VERSION=2
+  - WEBPACK_VERSION=3
+  - WEBPACK_VERSION=4
+
+matrix:
+  exclude:
+  - node_js: 4
+    env: WEBPACK_VERSION=4
+
 cache:
   directories:
     - ~/.npm
@@ -22,3 +32,5 @@ before_install:
 
 install:
   - npm i
+  - npm rm webpack
+  - npm install webpack@$WEBPACK_VERSION --ignore-scripts || true

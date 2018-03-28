@@ -34,15 +34,28 @@ class LodashModuleReplacementPlugin {
 
   apply(compiler) {
     const resolve = _.memoize(this.resolve, ({ resource }) => resource)
-    compiler.plugin('normal-module-factory', (nmf) => {
-      nmf.plugin('after-resolve', (data, callback) => {
-        if (data) {
-          data.resource = resolve(data)
-          return callback(null, data)
-        }
-        return callback()
+
+    /* Webpack >= 4 */
+    if (compiler.hooks) {
+      compiler.hooks.normalModuleFactory.tap('LodashModuleReplacementPlugin', (nmf) => {
+        nmf.hooks.afterResolve.tap('LodashModuleReplacementPlugin', (data) => {
+          if (data) {
+            data.resource = resolve(data)
+          }
+          return data
+        })
       })
-    })
+    } else {
+      compiler.plugin('normal-module-factory', (nmf) => {
+        nmf.plugin('after-resolve', (data, callback) => {
+          if (data) {
+            data.resource = resolve(data)
+            return callback(null, data)
+          }
+          return callback()
+        })
+      })
+    }
   }
 
   resolve({ rawRequest, resource }) {
