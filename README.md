@@ -7,6 +7,8 @@ or simpler alternatives.
 This plugin complements [babel-plugin-lodash](https://www.npmjs.com/package/babel-plugin-lodash)
 by shrinking its cherry-picked builds even further!
 
+DISCLAIMER: Using this plugin without enabling the proper feature sets may cause lodash functions to behave in unexpected ways. Methods may appear to work, however they might return incorrect results.
+
 ## Install
 
 ```shell
