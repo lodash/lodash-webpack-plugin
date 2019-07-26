@@ -49,7 +49,7 @@ export const features = {
     ['unary', '_baseUnary']
   ],
   'deburring': [
-    ['deburr', 'identity']
+    ['deburr', 'toString']
   ],
   'exotics': [
     ['_baseGetTag', '_objectToString'],
