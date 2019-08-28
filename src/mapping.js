@@ -74,7 +74,7 @@ export const features = {
     ['isTypedArray', 'stubFalse']
   ],
   'flattening': [
-    ['_baseFlatten', 'head'],
+    ['_baseFlatten', '_baseFlatten'],
     ['_flatRest', 'identity']
   ],
   'guards': [
