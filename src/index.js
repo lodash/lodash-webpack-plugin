@@ -37,12 +37,17 @@ class LodashModuleReplacementPlugin {
 
     /* Webpack >= 4 */
     if (compiler.hooks) {
+      const webpackVersion = parseInt(require('webpack/package.json').version, 10)
+
       compiler.hooks.normalModuleFactory.tap('LodashModuleReplacementPlugin', (nmf) => {
         nmf.hooks.afterResolve.tap('LodashModuleReplacementPlugin', (data) => {
           if (data) {
             data.resource = resolve(data)
           }
-          return data
+
+          if (webpackVersion < 5) {
+            return data
+          }
         })
       })
     } else {
