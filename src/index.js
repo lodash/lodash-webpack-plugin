@@ -37,12 +37,22 @@ class LodashModuleReplacementPlugin {
 
     /* Webpack >= 4 */
     if (compiler.hooks) {
+      // Webpack 5.1.0 adds the `compiler.webpack` property.
+      const isWebpack5 = !!compiler.webpack
+
       compiler.hooks.normalModuleFactory.tap('LodashModuleReplacementPlugin', (nmf) => {
         nmf.hooks.afterResolve.tap('LodashModuleReplacementPlugin', (data) => {
           if (data) {
-            data.resource = resolve(data)
+            if (isWebpack5) {
+              data.createData.resource = resolve(data.createData)
+            } else {
+              data.resource = resolve(data)
+            }
           }
-          return data
+
+          if (!isWebpack5) {
+            return data
+          }
         })
       })
     } else {
