@@ -1,6 +1,6 @@
 {
   "name": "lodash-webpack-plugin",
-  "version": "0.11.5",
+  "version": "0.11.6",
   "description": "Smaller modular Lodash builds.",
   "keywords": "lodash, modules, webpack-plugin",
   "repository": "lodash/lodash-webpack-plugin",
@@ -9,7 +9,8 @@
   "author": "John-David Dalton <john.david.dalton@gmail.com>",
   "contributors": [
     "John-David Dalton <john.david.dalton@gmail.com>",
-    "Mathias Bynens <mathias@qiwi.be>"
+    "Mathias Bynens <mathias@qiwi.be>",
+    "Benjamin Tan <demoneaux@gmail.com>"
   ],
   "scripts": {
     "build": "babel src --out-dir lib || true",
