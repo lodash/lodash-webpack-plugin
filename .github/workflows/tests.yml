@@ -1,0 +1,33 @@
+name: Node.js CI
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          - webpack-version: 5
+            node-version: 15.x
+          - webpack-version: 4
+            node-version: 14.x
+          - webpack-version: 3
+            node-version: 6.x
+          - webpack-version: 2
+            node-version: 6.x
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci || npm install
+    - run: npm rm webpack
+    - name: Install Webpack
+      env:
+        WEBPACK_VERSION: ${{ matrix.webpack-version }}
+      run: npm install webpack@$WEBPACK_VERSION --ignore-scripts || true
+    - run: npm test
